@@ -1,0 +1,27 @@
+<h2>Créer un Pokémon</h2>
+
+<%= form_with model: @pokemon, local: true do |form| %>
+  <div>
+    <%= form.label :name, "Nom du Pokémon" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :element_type, "Type du Pokémon" %>
+    <%= form.text_field :element_type %>
+  </div>
+
+  <div>
+    <%= form.label :address, "Adresse" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :price_per_day, "Prix par jour (€)" %>
+    <%= form.number_field :price_per_day %>
+  </div>
+
+  <div>
+    <%= form.submit "Créer Pokémon" %>
+  </div>
+<% end %>

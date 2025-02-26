@@ -21,7 +21,7 @@ class PokemonsController < ApplicationController
     private
 
     def pokemon_params
-      params.required(:pokemon).permit(:name, :element_type, :address, :price_per_day)
+      params.require(:pokemon).permit(:name, :element_type, :address, :price_per_day)
     end
   end
 end

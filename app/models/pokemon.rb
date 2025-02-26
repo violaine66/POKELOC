@@ -5,5 +5,4 @@ class Pokemon < ApplicationRecord
   validates :element_type, presence:true
   validates :address, presence:true
   validates :price_per_day, presence:true
-  # c'est un test
 end
