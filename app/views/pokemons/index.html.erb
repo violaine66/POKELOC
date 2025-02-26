@@ -1,0 +1,11 @@
+<h2>Liste des Pokémon</h2>
+
+<% @pokemons.each do |pokemon| %>
+  <div>
+    <h3><%= pokemon.name %> - <%= pokemon.element_type %></h3>
+    <p>Adresse : <%= pokemon.address %></p>
+    <p>Prix par jour : <%= pokemon.price_per_day %> €</p>
+    <%= link_to "Voir", pokemon_path(pokemon) %>
+  </div>
+  <hr>
+<% end %>
