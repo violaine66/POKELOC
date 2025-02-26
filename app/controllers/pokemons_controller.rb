@@ -5,11 +5,11 @@ class PokemonsController < ApplicationController
   end
 
   def new
-    @pokemon = pokemon.new
+    @pokemon = Pokemon.new
   end
 
   def create
-    @pokemon = pokemon.new(pokemon_params)
+    @pokemon = Pokemon.new(pokemon_params)
     @pokemon.user = current_user
 
     if @pokemon.save
