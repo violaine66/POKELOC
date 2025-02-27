@@ -27,16 +27,45 @@ pokemon_list["results"].each do |pokemon|
 
   name = pokemon_data["name"].capitalize
   element_type = pokemon_data["types"].first["type"]["name"].capitalize
-  address = "Kanto"
+  address =  [
+    "Pallet Town",
+    "Cinnabar Island",
+    "Cerulean City",
+    "Vermilion City",
+    "Lavender Town",
+    "Goldenrod City",
+    "Slateport City",
+    "Littleroot Town",
+    "Saffron City",
+    "Castelia City",
+    "Lumiose City",
+    "Mistralton City",
+    "Viridian City",
+    "Fuchsia City",
+    "Mauville City",
+    "Hearthome City",
+    "Icirrus City",
+    "Hau'oli City",
+    "Celadon City",
+    "Snowbelle City"
+  ]
+
   price_per_day = rand(5..20)
 
-  Pokemon.create!(
+  created_pokemon = Pokemon.create!(
     name: name,
     element_type: element_type,
-    address: address,
+    address: address.sample,
     price_per_day: price_per_day,
     user: [user1, user2].sample
   )
+
+   image_url = pokemon_data['sprites']['front_default']
+   created_pokemon.photo.attach(
+     io: URI.open(image_url),
+     filename: "#{name.downcase}.png", 
+     content_type: 'image/png'
+   )
 
   puts "Created: #{name} (Element ype: #{element_type}, Price: #{price_per_day}€/day)"
 end
