@@ -11,6 +11,11 @@
 <% @pokemons.each do |pokemon| %>
   <div>
     <h3><%= pokemon.name %> - <%= pokemon.element_type %></h3>
+    <% if pokemon.photo.attached? %>
+      <%= image_tag pokemon.photo, alt: pokemon.name, class: "pokemon-image", width: 200 %>
+        <% else %>
+        <p>No image available</p>
+    <% end %>
     <p>Adresse : <%= pokemon.address %></p>
     <p>Prix par jour : <%= pokemon.price_per_day %> €</p>
     <%= link_to "Voir", pokemon_path(pokemon) %>
