@@ -11,8 +11,10 @@ require 'json'
 require 'open-uri'
 
 puts 'Cleaning database...'
+Booking.destroy_all
 Pokemon.destroy_all
 User.destroy_all
+
 
 puts "Creating user..."
 user1 = User.create!(name: "Professeur Chen", email: "professeur.chen@pokemon.com", password: "password")
@@ -63,7 +65,7 @@ pokemon_list["results"].each do |pokemon|
    image_url = pokemon_data['sprites']['front_default']
    created_pokemon.photo.attach(
      io: URI.open(image_url),
-     filename: "#{name.downcase}.png", 
+     filename: "#{name.downcase}.png",
      content_type: 'image/png'
    )
 
