@@ -1,4 +1,12 @@
-<h2>Liste des Pokémon</h2>
+<div class="pokemons d-flex justify-content-between">
+  <h2 class= "my-3">Liste des Pokémon</h2>
+
+  <div class="new class my-3">
+      <%= link_to "Add a Pokemon", new_pokemon_path%>
+  </div>
+
+
+</div>
 
 <% @pokemons.each do |pokemon| %>
   <div>
