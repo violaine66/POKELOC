@@ -1,2 +1,16 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class="container">
+  <h2>Réserver ce Pokémon ?</h2>
+  <div class="row">
+    <div class="col-6">
+      <p><%= @pokemon.name  %> - <%= @pokemon.element_type %></p>
+      <%= simple_form_for [@pokemon, @booking] do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit "Confirmer réservation", class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+</div>

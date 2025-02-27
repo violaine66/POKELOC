@@ -14,6 +14,7 @@
     <p>Adresse : <%= pokemon.address %></p>
     <p>Prix par jour : <%= pokemon.price_per_day %> €</p>
     <%= link_to "Voir", pokemon_path(pokemon) %>
+    <%= link_to "Réserver", new_pokemon_booking_path(pokemon) %>
   </div>
   <hr>
 <% end %>
