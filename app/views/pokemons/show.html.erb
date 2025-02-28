@@ -1,0 +1,11 @@
+<h2><%= @pokemon.name %> - <%= @pokemon.element_type %></h2>
+
+<% if @pokemon.photo.attached? %>
+  <%= image_tag @pokemon.photo, alt: "Image de #{@pokemon.name}", width: 300 %>
+<% end %>
+
+<p><strong>Description :</strong> <%= @pokemon.description %></p>
+<p><strong>Adresse :</strong> <%= @pokemon.address %></p>
+<p><strong>Prix par jour :</strong> <%= @pokemon.price_per_day %> €</p>
+
+<%= link_to "Retour à la liste", pokemons_path %>
