@@ -86,8 +86,6 @@ pokemon_list["results"].each do |pokemon|
      content_type: 'image/png'
    )
 
-
-
   puts "Created: #{name} (Element ype: #{element_type}, Price: #{price_per_day}€/day)"
 end
 
