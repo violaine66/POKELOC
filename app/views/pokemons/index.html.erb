@@ -2,7 +2,7 @@
   <h2 class= "my-3">Liste des Pokémon</h2>
 
   <div class="new class my-3">
-      <%= link_to "Add a Pokemon", new_pokemon_path%>
+      <%= link_to "Ajouter un Pokemon", new_pokemon_path%>
   </div>
 
 
@@ -11,8 +11,10 @@
 <% @pokemons.each do |pokemon| %>
   <div>
     <h3><%= pokemon.name %> - <%= pokemon.element_type %></h3>
-    <% if pokemon.photo.attached? %>
-      <%= image_tag pokemon.photo, alt: pokemon.name, class: "pokemon-image", width: 200 %>
+    <% if pokemon.photos.attached? %>
+
+        <%= image_tag pokemon.photos.first, alt: pokemon.name, class: "pokemon-image", width: 200 %>
+
         <% else %>
         <p>No image available</p>
     <% end %>
