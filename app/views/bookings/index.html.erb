@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Your current bookings</h2>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <% @bookings.each do |booking| %>
+        <div class="card my-3 rounded shadow-sm">
+          <% if booking.pokemon.photo.attached? %>
+            <%= image_tag booking.pokemon.photo, alt: booking.pokemon.name, class: "pokemon-image", width: 200 %>
+          <% else %>
+            <p>No image available</p>
+          <% end %>
+          <%= booking.pokemon.name %>
+          <%= booking.pokemon.element_type %>
+          <p>
+            Starting from <%= booking.start_date %> to <%= booking.end_date %>.
+            Total price: <%= booking.total_price %>€
+          </p>
+          <% if booking.status == "active" %>
+            <%= link_to "Cancel booking",
+                cancel_booking_path(booking),
+                data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
+          <% else %>
+            <i>Cancelled</i>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+
+
+</div>

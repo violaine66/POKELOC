@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   resources :pokemons, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:new, :create]
   end
+
+  resources :bookings, only: [:index] do
+    member do
+      patch :cancel
+    end
+  end
 end

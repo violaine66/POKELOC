@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_pokemon, only: %i[new create]
 
+  def index
+    @bookings = current_user.bookings
+  end
+
   def new
     @booking = Booking.new
   end
@@ -9,14 +13,21 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.pokemon = @pokemon
     @booking.user = current_user
-    @booking.status = "réservé"
-    @booking.total_price = @booking.start_date == @booking.end_date ? @pokemon.price_per_day : (@booking.end_date - @booking.start_date + 1) * @pokemon.price_per_day
+    @booking.status = "active"
+    @booking.total_price = (@booking.end_date - @booking.start_date + 1) * @pokemon.price_per_day
     if @booking.save
       redirect_to pokemon_path(@pokemon)
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+  def cancel
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "inactive")
+    redirect_to bookings_path
+  end
+
 
   private
 
