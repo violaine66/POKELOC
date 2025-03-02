@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Réserver ce Pokémon ?</h2>
+  <h2>Book This Pokemon ?</h2>
   <div class="row">
     <div class="col-6">
       <p><%= @pokemon.name  %> - <%= @pokemon.element_type %></p>
@@ -12,7 +12,7 @@
                      as: :string,
                     input_html: { data:{ controller: 'datepicker' }
                 } %>
-        <%= f.submit "Confirmer réservation", class: "btn btn-outline-primary" %>
+        <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
   </div>

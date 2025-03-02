@@ -1,8 +1,8 @@
 <div class="pokemons d-flex justify-content-between">
-  <h2 class= "my-3">Liste des Pokémon</h2>
+  <h2 class= "my-3">Pokemons list</h2>
 
   <div class="new class my-3">
-      <%= link_to "Ajouter un Pokemon", new_pokemon_path%>
+      <%= link_to "Add a Pokemon", new_pokemon_path%>
   </div>
 
 
@@ -18,10 +18,10 @@
         <% else %>
         <p>No image available</p>
     <% end %>
-    <p>Adresse : <%= pokemon.address %></p>
-    <p>Prix par jour : <%= pokemon.price_per_day %> €</p>
-    <%= link_to "Voir", pokemon_path(pokemon) %>
-    <%= link_to "Réserver", new_pokemon_booking_path(pokemon) %>
+    <p>Address : <%= pokemon.address %></p>
+    <p>Price per day : <%= pokemon.price_per_day %> €</p>
+    <%= link_to "See this Pokemon", pokemon_path(pokemon) %>
+    <%= link_to "Book this Pokemon", new_pokemon_booking_path(pokemon) %>
   </div>
   <hr>
 <% end %>
