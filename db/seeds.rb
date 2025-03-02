@@ -10,88 +10,6 @@
 # require 'json'
 # require 'open-uri'
 
-# puts 'Cleaning database...'
-# Booking.destroy_all
-
-# Pokemon.destroy_all
-# User.destroy_all
-
-
-# puts "Creating user..."
-# user1 = User.create!(name: "Professeur Chen", email: "professeur.chen@pokemon.com", password: "password")
-# user2 = User.create!(name: "Team Pokemon", email: "team_pokemon@lewagon.fr", password: "pokemons")
-
-# puts " Pokémons from PokeAPI..."
-# url = "https://pokeapi.co/api/v2/pokemon?limit=20"
-# pokemon_list = JSON.parse(URI.open(url).read)
-
-# pokemon_list["results"].each do |pokemon|
-#   pokemon_data = JSON.parse(URI.open(pokemon["url"]).read)
-
-#   name = pokemon_data["name"].capitalize
-#   element_type = pokemon_data["types"].first["type"]["name"].capitalize
-#   address =  [
-#     "Pallet Town",
-#     "Cinnabar Island",
-#     "Cerulean City",
-#     "Vermilion City",
-#     "Lavender Town",
-#     "Goldenrod City",
-#     "Slateport City",
-#     "Littleroot Town",
-#     "Saffron City",
-#     "Castelia City",
-#     "Lumiose City",
-#     "Mistralton City",
-#     "Viridian City",
-#     "Fuchsia City",
-#     "Mauville City",
-#     "Hearthome City",
-#     "Icirrus City",
-#     "Hau'oli City",
-#     "Celadon City",
-#     "Snowbelle City"
-#   ]
-
-#   descriptions = [
-#     "Ce Pokémon adore se prélasser au soleil et se laisse facilement distraire par des éclats de lumière.",
-#     "Il a un tempérament calme, mais peut parfois se montrer surprenant quand il est contrarié.",
-#     "Ce Pokémon est un expert pour se cacher dans les buissons et surprendre ses ennemis.",
-#     "Ne sous-estimez jamais sa petite taille, ce Pokémon a un cœur grand comme l'océan !",
-#     "Il adore se rouler en boule et se prendre pour une balle de tennis, prêt à sauter dans toutes les directions.",
-#     "Ce Pokémon pourrait vous suivre partout... à condition qu'il ne s'endorme pas en cours de route.",
-#     "Il aime chanter des chansons mystérieuses la nuit, mais n'ose pas trop de peur de déranger les autres.",
-#     "Sa couleur vive en fait un excellent guide dans la forêt, mais il n'est pas toujours facile à suivre.",
-#     "Ce Pokémon est une véritable boule d'énergie, capable de courir pendant des heures sans jamais se fatiguer.",
-#     "Un peu timide au début, mais une fois qu'il vous connaît, il est un ami fidèle et dévoué.",
-#     "Ce Pokémon est très protecteur de son territoire et aime montrer ses pouvoirs à ceux qui osent s'aventurer trop près."
-#   ]
-
-#   price_per_day = rand(5..20)
-#   description = descriptions.sample
-
-#   created_pokemon = Pokemon.create!(
-#     name: name,
-#     element_type: element_type,
-#     address: address.sample,
-#     price_per_day: price_per_day,
-#     user: [user1, user2].sample,
-#     description: description
-#   )
-
-#    image_url = pokemon_data['sprites']['front_default']
-#    created_pokemon.photo.attach(
-#      io: URI.open(image_url),
-#      filename: "#{name.downcase}.png",
-#      content_type: 'image/png'
-#    )
-
-#   puts "Created: #{name} (Element ype: #{element_type}, Price: #{price_per_day}€/day)"
-# end
-
-# puts "Finished!  Created #{Pokemon.count} Pokemons"
-
-
 require 'json'
 require 'open-uri'
 
@@ -105,7 +23,7 @@ user1 = User.create!(name: "Professeur Chen", email: "professeur.chen@pokemon.co
 user2 = User.create!(name: "Team Pokemon", email: "team_pokemon@lewagon.fr", password: "pokemons")
 
 puts "Fetching Pokémons from PokeAPI..."
-url = "https://pokeapi.co/api/v2/pokemon?limit=20"
+url = "https://pokeapi.co/api/v2/pokemon?limit=50"
 pokemon_list = JSON.parse(URI.open(url).read)
 
 pokemon_list["results"].each do |pokemon|
@@ -116,17 +34,21 @@ pokemon_list["results"].each do |pokemon|
   name = pokemon_data["name"].capitalize
   element_type = pokemon_data["types"].first["type"]["name"].capitalize
   address = [
-    "Pallet Town", "Cinnabar Island", "Cerulean City", "Vermilion City", "Lavender Town",
-    "Goldenrod City", "Slateport City", "Littleroot Town", "Saffron City", "Castelia City",
-    "Lumiose City", "Mistralton City", "Viridian City", "Fuchsia City", "Mauville City",
-    "Hearthome City", "Icirrus City", "Hau'oli City", "Celadon City", "Snowbelle City"
+    "Rue du Chenipan, Bourg Palette", "Avenue Dracaufeu, Cramois’Île", "Quai Léviator, Azuria", "Boulevard Pikachu, Carmin-sur-Mer", "Impasse Fantominus, Lavanville",
+    "Place Togepi, Doublonville", "Rue du Wailord, Poivressel", "Allée Arcko, Bourg-en-Vol", "Avenue Kadabra, Safrania", "Promenade Noarfang, Volucité",
+    "Rue Méga-Gardevoir, Illumis", "Sentier Altaria, Mistral", "Impasse Tortank, Jadielle", "Chemin Smogogo, Parmanie", "Allée Dynamo, Lavandia",
+    "Esplanade Togekiss, Unionpolis", "Parc Cryptero, Flocombe", "Rue Brindibou, Ekaeka", "Place Évoli, Céladopole", "Boulevard Givrali, Fort Vanitas",
+    "Avenue Sulfura, Îles Écume", "Boulevard Mewtwo, Caverne Azurée", "Place Celebi, Forêt Johto", "Allée Rayquaza, Pilier Céleste", "Rue Dialga, Mont Couronné",
+    "Esplanade Giratina, Distorsion", "Sentier Reshiram, Tour Dragospire", "Rue Zygarde, Grotte Coda", "Place Lunala, Autel de la Lune", "Boulevard Zacian, Forêt de Sleepwood",
+    "Promenade Arceus, Hall de l'Origine", "Quai Kyogre, Abysse Maritime", "Chemin Darkrai, Île Pleine Lune", "Place Ho-oh, Tour Ferraille", "Rue Latios, Îles du Sud",
+    "Allée Deoxys, Triangle des Bermudes", "Avenue Lugia, Tour des Mers", "Esplanade Regigigas, Temple de Neige", "Boulevard Palkia, Galaxie Distorsion", "Promenade Jirachi, Vallée des Étoiles"
   ]
 
   # Récupération de la description en français
   description_entry = species_data["flavor_text_entries"].find { |entry| entry["language"]["name"] == "fr" }
   description = description_entry ? description_entry["flavor_text"].gsub("\n", " ") : "Description non disponible."
 
-  price_per_day = rand(35..75)
+  price_per_day = rand(5..20)
 
   created_pokemon = Pokemon.create!(
     name: name,
@@ -137,14 +59,24 @@ pokemon_list["results"].each do |pokemon|
     description: description
   )
 
-  image_url = pokemon_data['sprites']['front_default']
-  created_pokemon.photo.attach(
-    io: URI.open(image_url),
-    filename: "#{name.downcase}.png",
-    content_type: 'image/png'
-  )
+  image_urls = [
+    pokemon_data['sprites']['front_default'],
+    pokemon_data['sprites']['back_default'],
+    pokemon_data['sprites']['front_shiny'],
+    pokemon_data['sprites']['back_shiny'],
+    pokemon_data['sprites']['other']['official-artwork']['front_default'],
+    pokemon_data['sprites']['other']['official-artwork']['front_shiny']
+  ].compact
+  
+  image_urls.last(2).each_with_index do |image_url, index|
+    created_pokemon.photos.attach(
+      io: URI.open(image_url),
+      filename: "#{name.downcase}_#{index}.png",
+      content_type: 'image/png'
+    )
+  end
 
-  puts "Created: #{name} (Element Type: #{element_type}, Price: #{price_per_day}€/day)"
+  puts "Created: #{name} (Element Type: #{element_type}, Price: #{price_per_day}€/day) with #{image_urls.size} images"
 end
 
 puts "Finished! Created #{Pokemon.count} Pokemons"
