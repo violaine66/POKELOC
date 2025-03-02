@@ -44,11 +44,10 @@ pokemon_list["results"].each do |pokemon|
     "Allée Deoxys, Triangle des Bermudes", "Avenue Lugia, Tour des Mers", "Esplanade Regigigas, Temple de Neige", "Boulevard Palkia, Galaxie Distorsion", "Promenade Jirachi, Vallée des Étoiles"
   ]
 
-  # Récupération de la description en français
-  description_entry = species_data["flavor_text_entries"].find { |entry| entry["language"]["name"] == "fr" }
-  description = description_entry ? description_entry["flavor_text"].gsub("\n", " ") : "Description non disponible."
+# Récupérer directement la description sans vérifier la langue
+description = species_data["flavor_text_entries"].first["flavor_text"].gsub("\n", " ")
 
-  price_per_day = rand(5..20)
+price_per_day = rand(5..20)
 
   created_pokemon = Pokemon.create!(
     name: name,
@@ -67,7 +66,7 @@ pokemon_list["results"].each do |pokemon|
     pokemon_data['sprites']['other']['official-artwork']['front_default'],
     pokemon_data['sprites']['other']['official-artwork']['front_shiny']
   ].compact
-  
+
   image_urls.last(2).each_with_index do |image_url, index|
     created_pokemon.photos.attach(
       io: URI.open(image_url),
