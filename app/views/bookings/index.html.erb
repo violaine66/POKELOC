@@ -1,32 +1,38 @@
 <div class="container">
-  <h2>Your current bookings</h2>
+  <h2>My current bookings</h2>
   <div class="row justify-content-center">
     <div class="col-6">
       <% @bookings.each do |booking| %>
-      <div class="card my-3 rounded shadow-sm">
-          <% if booking.pokemon.photos.attached?| %>
-
-            <% booking.pokemon.photos.each do |photo| %>
-            <%= image_tag photo, alt: booking.pokemon.name, class: "pokemon-image", width: 200 %>
-          <% end %>
-          </div>
+        <div class="pokemon-card flex-row my-3 rounded shadow-sm">
+          <% if booking.pokemon.photos.attached? %>
+            <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "pokemon-image", width: 120 %>
           <% else %>
 
             <p>No image available</p>
           <% end %>
-          <%= booking.pokemon.name %>
-          <%= booking.pokemon.element_type %>
-          <p>
-            Starting from <%= booking.start_date %> to <%= booking.end_date %>.
-            Total price: <%= booking.total_price %>€
-          </p>
-          <% if booking.status == "active" %>
-            <%= link_to "Cancel booking",
-                cancel_booking_path(booking),
-                data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
-          <% else %>
-            <i>Cancelled</i>
-          <% end %>
+          <div class="card-body">
+            <h4 class="card-title">
+              <%= booking.pokemon.name %> - <%= booking.pokemon.element_type %>
+            </h4>
+
+            <p>
+              Booking starts from <%= booking.start_date %> to <%= booking.end_date %>.
+              <br>
+              Total price: <%= booking.total_price %>€
+            </p>
+
+            <%= link_to "View Pokemon", pokemon_path(booking.pokemon), class: "btn btn-outline-secondary btn-sm" %>
+
+            <% if booking.status == "active" %>
+              <%= link_to "Cancel",
+                  cancel_booking_path(booking),
+                  class: "btn btn-outline-danger btn-sm",
+                  data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
+            <% else %>
+              <i>Cancelled</i>
+            <% end %>
+          </div>
+
         </div>
       <% end %>
 
