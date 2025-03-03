@@ -1,9 +1,8 @@
-<div class="container">
-  <h2>My current bookings</h2>
+<div class="container mt-3"><h2>My current bookings</h2>
   <div class="row justify-content-center">
     <div class="col-6">
       <% @bookings.each do |booking| %>
-        <div class="pokemon-card flex-row my-3 rounded shadow-sm">
+       <div class="pokemon-card flex-row my-3 rounded shadow-sm">
           <% if booking.pokemon.photos.attached? %>
             <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "pokemon-image", width: 120 %>
           <% else %>
@@ -28,6 +27,7 @@
                   cancel_booking_path(booking),
                   class: "btn btn-outline-danger btn-sm",
                   data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
+              <%= link_to "Add a review", new_booking_review_path(booking), class:"text-decoration-none text-dark  btn btn-outline-secondary btn-sm ms-1" %>
             <% else %>
               <i>Cancelled</i>
             <% end %>
@@ -35,10 +35,6 @@
 
         </div>
       <% end %>
-
     </div>
   </div>
-
-
-
 </div>
