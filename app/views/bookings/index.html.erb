@@ -3,10 +3,15 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <% @bookings.each do |booking| %>
-        <div class="card my-3 rounded shadow-sm">
-          <% if booking.pokemon.photo.attached? %>
-            <%= image_tag booking.pokemon.photo, alt: booking.pokemon.name, class: "pokemon-image", width: 200 %>
+      <div class="card my-3 rounded shadow-sm">
+          <% if booking.pokemon.photos.attached?| %>
+
+            <% booking.pokemon.photos.each do |photo| %>
+            <%= image_tag photo, alt: booking.pokemon.name, class: "pokemon-image", width: 200 %>
+          <% end %>
+          </div>
           <% else %>
+
             <p>No image available</p>
           <% end %>
           <%= booking.pokemon.name %>
