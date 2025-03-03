@@ -30,6 +30,20 @@
   margin-bottom: 15px;
 }
 
-.booking .btn {
-  width: 100%;
+
+.pokemon-container-show {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.pokemon-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.booking {
+  max-height: 350px;
+}
+.map-container {
+  filter: saturate(1.5);
 }

@@ -23,7 +23,7 @@ user1 = User.create!(name: "Professeur Chen", email: "professeur.chen@pokemon.co
 user2 = User.create!(name: "Team Pokemon", email: "team_pokemon@lewagon.fr", password: "pokemons")
 
 puts "Fetching Pokémons from PokeAPI..."
-url = "https://pokeapi.co/api/v2/pokemon?limit=50"
+url = "https://pokeapi.co/api/v2/pokemon?limit=30"
 pokemon_list = JSON.parse(URI.open(url).read)
 
 pokemon_list["results"].each do |pokemon|
@@ -33,21 +33,43 @@ pokemon_list["results"].each do |pokemon|
 
   name = pokemon_data["name"].capitalize
   element_type = pokemon_data["types"].first["type"]["name"].capitalize
-  address = [
-    "Rue du Chenipan, Bourg Palette", "Avenue Dracaufeu, Cramois’Île", "Quai Léviator, Azuria", "Boulevard Pikachu, Carmin-sur-Mer", "Impasse Fantominus, Lavanville",
-    "Place Togepi, Doublonville", "Rue du Wailord, Poivressel", "Allée Arcko, Bourg-en-Vol", "Avenue Kadabra, Safrania", "Promenade Noarfang, Volucité",
-    "Rue Méga-Gardevoir, Illumis", "Sentier Altaria, Mistral", "Impasse Tortank, Jadielle", "Chemin Smogogo, Parmanie", "Allée Dynamo, Lavandia",
-    "Esplanade Togekiss, Unionpolis", "Parc Cryptero, Flocombe", "Rue Brindibou, Ekaeka", "Place Évoli, Céladopole", "Boulevard Givrali, Fort Vanitas",
-    "Avenue Sulfura, Îles Écume", "Boulevard Mewtwo, Caverne Azurée", "Place Celebi, Forêt Johto", "Allée Rayquaza, Pilier Céleste", "Rue Dialga, Mont Couronné",
-    "Esplanade Giratina, Distorsion", "Sentier Reshiram, Tour Dragospire", "Rue Zygarde, Grotte Coda", "Place Lunala, Autel de la Lune", "Boulevard Zacian, Forêt de Sleepwood",
-    "Promenade Arceus, Hall de l'Origine", "Quai Kyogre, Abysse Maritime", "Chemin Darkrai, Île Pleine Lune", "Place Ho-oh, Tour Ferraille", "Rue Latios, Îles du Sud",
-    "Allée Deoxys, Triangle des Bermudes", "Avenue Lugia, Tour des Mers", "Esplanade Regigigas, Temple de Neige", "Boulevard Palkia, Galaxie Distorsion", "Promenade Jirachi, Vallée des Étoiles"
+  address = addresses = [
+    "Rua do Bonfim, Lisbonne, Portugal",
+    "Calle del Espejo, Madrid, Espagne",
+    "Baker Street, Londres, Royaume-Uni",
+    "Chicken Dinner Road, Idaho, États-Unis",
+    "Rua das Flores, Porto, Portugal",
+    "Sesame Street, New York, États-Unis",
+    "Avenue de la Toison d'Or, Bruxelles, Belgique",
+    "Paradisgatan, Göteborg, Suède",
+    "Funny Street, Canberra, Australie",
+    "Ha Ha Road, Londres, Royaume-Uni",
+    "Calle de la Amargura, San José, Costa Rica",
+    "Pillow Street, Manchester, Royaume-Uni",
+    "Rue du Chat-qui-Pêche, Paris, France",
+    "Bubblegum Alley, San Luis Obispo, États-Unis",
+    "Calle de la Primavera, Séville, Espagne",
+    "Rua do Céu, Rio de Janeiro, Brésil",
+    "Pancake Street, Rotterdam, Pays-Bas",
+    "Bumpy Road, Alaska, États-Unis",
+    "Avenue de la Joie, Québec, Canada",
+    "Chemin du Bout du Monde, Genève, Suisse",
+    "Diagon Alley, Édimbourg, Royaume-Uni",
+    "Lost Street, Oklahoma City, États-Unis",
+    "Memory Lane, Toronto, Canada",
+    "Nowhere Road, Nevada, États-Unis",
+    "Rue de la Bière, Bruxelles, Belgique",
+    "Chicken Alley, Charleston, États-Unis",
+    "Lollipop Lane, California, États-Unis",
+    "Happy Street, Singapour",
+    "Rainbow Road, Christchurch, Nouvelle-Zélande",
+    "Zzyzx Road, Californie, États-Unis"
   ]
 
 # Récupérer directement la description sans vérifier la langue
 description = species_data["flavor_text_entries"].first["flavor_text"].gsub("\n", " ")
 
-price_per_day = rand(5..20)
+price_per_day = rand(50..100)
 
   created_pokemon = Pokemon.create!(
     name: name,
@@ -59,10 +81,6 @@ price_per_day = rand(5..20)
   )
 
   image_urls = [
-    pokemon_data['sprites']['front_default'],
-    pokemon_data['sprites']['back_default'],
-    pokemon_data['sprites']['front_shiny'],
-    pokemon_data['sprites']['back_shiny'],
     pokemon_data['sprites']['other']['official-artwork']['front_default'],
     pokemon_data['sprites']['other']['official-artwork']['front_shiny']
   ].compact

@@ -1,27 +1,30 @@
 <div class="pokemons d-flex justify-content-between">
   <h2 class= "my-3">Pokemons list</h2>
 
-  <div class="new class my-3">
-      <%= link_to "Add a Pokemon", new_pokemon_path%>
-  </div>
+    <div class="new class my-3">
+        <%= link_to "Add a Pokemon", new_pokemon_path%>
+    </div>
 
 
 </div>
+<div class="pokemons-grid-index my-5">
 
-<% @pokemons.each do |pokemon| %>
-  <div>
-    <h3><%= pokemon.name %> - <%= pokemon.element_type %></h3>
-    <% if pokemon.photos.attached? %>
+   <% @pokemons.each do |pokemon| %>
+    <div>
+      <h3><%= pokemon.name %> - <%= pokemon.element_type %></h3>
+        <% if pokemon.photos.attached? %>
 
         <%= image_tag pokemon.photos.first, alt: pokemon.name, class: "pokemon-image", width: 200 %>
 
         <% else %>
         <p>No image available</p>
-    <% end %>
-    <p>Address : <%= pokemon.address %></p>
-    <p>Price per day : <%= pokemon.price_per_day %> €</p>
-    <%= link_to "See this Pokemon", pokemon_path(pokemon) %>
-   
-  </div>
-  <hr>
+      <% end %>
+      <p>Address : <%= pokemon.address %></p>
+      <p>Price per day : <%= pokemon.price_per_day %> €</p>
+      <%= link_to "See this Pokemon", pokemon_path(pokemon) %>
+
+    </div>
+
 <% end %>
+
+</div>

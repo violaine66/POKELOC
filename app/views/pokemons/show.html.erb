@@ -5,15 +5,20 @@
 
 
       <% if @pokemon.photos.attached? %>
-        <div id="pokemonCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="pokemonCarousel" class="carousel slide">
           <div class="carousel-inner">
+
             <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
                 <%= image_tag rails_blob_path(photo, only_path: true), alt: @pokemon.name, class: "pokemon-image d-block w-50", style: "max-height: 200px; object-fit: contain;" %>
               </div>
             <% end %>
           </div>
-
+          <div class="carousel-indicators">
+              <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
+              <button type="button" data-bs-target="#pokemonCarousel" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+              <% end %>
+          </div>
           <!-- Flèche de navigation précédente -->
           <button class="carousel-control-prev" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,11 +37,15 @@
         <p><strong>Description :</strong> <%= @pokemon.description %></p>
         <p><strong>Address :</strong> <%= @pokemon.address %></p>
         <p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
-
+        <div style="width: 100%; height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
   </div>
 
     <%# Formulaire de réservation %>
-    <div class="booking w-40">
+    <div class="booking w-40 sticky-top">
       <div class="new-booking">
         <% if flash[:success] %>
           <div class="alert alert-success">
