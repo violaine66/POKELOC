@@ -1,25 +1,81 @@
+.banner{
+  background-size: contain;  /* Cela permet à l'image de s'ajuster tout en maintenant ses proportions */
+  background-position: center;  /* Centrer l'image */
+  background-repeat: no-repeat;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
 .pokemon-container-show {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -50px;
+  gap: 20px;
+}
+.pokemon-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.map-container {
+  filter: saturate(1.5);
+}
+.pokemon-container-show {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .pokemon-card {
-  flex: 0 0 60%; /* 60% de la largeur */
+  display: flex;
+  gap: 20px;
+  flex: 3;
+}
+
+.pokemon-image-container {
+  flex: 1;
+}
+
+.pokemon-info {
+  flex: 2;
 }
 
 .booking {
-  flex: 0 0 40%; /* 40% de la largeur */
+  flex: 1;
+}
+#map {
+  border-radius: 8px;
+}
+.new-booking {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-  .pokemon-card, .booking {
-    flex: 0 0 100%; /* Sur mobile, chaque élément prend toute la largeur */
+@media (max-width: 767px) {
+  .pokemon-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pokemon-image-container,
+  .pokemon-info {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
-.booking {
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 10px;
-}
+
 
 .booking .container {
   width: 100%;
@@ -28,22 +84,4 @@
 .booking h2 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-}
-
-
-.pokemon-container-show {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.pokemon-card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-}
-.booking {
-  max-height: 350px;
-}
-.map-container {
-  filter: saturate(1.5);
 }

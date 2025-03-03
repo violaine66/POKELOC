@@ -1,15 +1,21 @@
-<h2>Add a new Pokemon</h2>
+<div class="container">
+ <div class="new-pokemon w-50">
+  <h2 class = "my-3" >Add a new Pokemon</h2>
+    <%= simple_form_for @pokemon do |f| %>
+    <%= f.input :name %>
+    <%= f.input :element_type %>
+    <%= f.input :address%>
+    <%= f.input :price_per_day %>
+    <%= f.input :description %>
 
-<%= simple_form_for @pokemon do |f| %>
-  <%= f.input :name %>
-  <%= f.input :element_type %>
-  <%= f.input :address%>
-  <%= f.input :price_per_day %>
-  <%= f.input :description %>
-
-   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.button :submit %>
+    <% end %>
 
 
-<%= link_to "back", pokemons_path %>
+    <%= link_to "back", pokemons_path %>
+
+  </div>
+
+
+</div>
