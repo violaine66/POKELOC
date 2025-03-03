@@ -1,79 +1,82 @@
-<div class="pokemon-container-show d-flex justify-content-center">
+<div class="banner" style="background-image: linear-gradient(rgba(139, 16, 16, 0.3), rgba(56, 13, 13, 0.3)), url('/images/pokeball.png')"></div>
+<div class="container mb-4">
+  <div class="pokemon-container-show d-flex flex-column flex-lg-row justify-content-center mt-3">
 
-  <div class="pokemon-card w-60">
-     <h2><%= @pokemon.name %> - <%= @pokemon.element_type %></h2>
+  <!-- Section Pokémon avec image et informations, qui sera en dessous sur les petits écrans -->
+  <div class="pokemon-card w-100 h-100 mb-4 d-flex flex-column">
+    <h2><%= @pokemon.name %> - <%= @pokemon.element_type %></h2>
 
-
-      <% if @pokemon.photos.attached? %>
-        <div id="pokemonCarousel" class="carousel slide">
-          <div class="carousel-inner">
-
-            <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
-              <div class="carousel-item <%= 'active' if index == 0 %>">
-                <%= image_tag rails_blob_path(photo, only_path: true), alt: @pokemon.name, class: "pokemon-image d-block w-50", style: "max-height: 200px; object-fit: contain;" %>
-              </div>
-            <% end %>
-          </div>
-          <div class="carousel-indicators">
+    <div class="d-flex flex-column flex-lg-row" style="flex: 1;">
+      <!-- Section Image -->
+      <div class="pokemon-image-container me-lg-4 mb-3 mb-lg-0" style="flex: 1;">
+        <% if @pokemon.photos.attached? %>
+          <div id="pokemonCarousel" class="carousel slide ps-4">
+            <div class="carousel-inner">
               <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
-              <button type="button" data-bs-target="#pokemonCarousel" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+                <div class="carousel-item <%= 'active' if index == 0 %>">
+                  <%= image_tag rails_blob_path(photo, only_path: true), alt: @pokemon.name, class: "pokemon-image d-block w-100", style: "max-height: 300px; object-fit: contain;" %>
+                </div>
               <% end %>
-          </div>
-          <!-- Flèche de navigation précédente -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-            <!-- Flèche de navigation suivante -->
-          <button class="carousel-control-next" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            </div>
+            <div class="carousel-indicators">
+              <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
+                <button type="button" data-bs-target="#pokemonCarousel" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
             </button>
-        </div>
+            <button class="carousel-control-next" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         <% else %>
           <p>No image available</p>
         <% end %>
+      </div>
 
+      <!-- Section Informations -->
+      <div class="pokemon-info" style="flex: 2;">
         <p><strong>Description :</strong> <%= @pokemon.description %></p>
         <p><strong>Address :</strong> <%= @pokemon.address %></p>
         <p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
-        <div style="width: 100%; height: 600px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
-  </div>
-
-    <%# Formulaire de réservation %>
-    <div class="booking w-40 sticky-top">
-      <div class="new-booking">
-        <% if flash[:success] %>
-          <div class="alert alert-success">
-            <%= flash[:success] %>
-          </div>
-        <% elsif flash[:error] %>
-          <div class="alert alert-danger">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
-
-        <h2>Book This Pokemon ?</h2>
-
-        <p><%= @pokemon.name  %> - <%= @pokemon.element_type %></p>
-          <%= simple_form_for [@pokemon, @booking] do |f| %>
-              <%= f.input :start_date,
-                          as: :string,
-                          input_html: { data:{ controller: 'datepicker' }
-                          } %>
-              <%= f.input :end_date,
-                          as: :string,
-                          input_html: { data:{ controller: 'datepicker' }
-                          } %>
-              <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
-              <% end %>
       </div>
     </div>
 
+    <!-- Carte Map sous les informations, prenant toute la largeur -->
+    <div  id="map" style="width: 100%; height: 600px; margin-top: 20px;"
+         data-controller="map"
+         data-map-markers-value="<%= @markers.to_json %>"
+         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
+    <!-- Section de réservation (Booking) -->
+  <div class="booking w-100 w-lg-25 mb-4 mb-lg-0" style="position: relative;">
+     <div class="new-booking sticky-top" style="top: 20px;">
+      <% if flash[:success] %>
+        <div class="alert alert-success">
+          <%= flash[:success] %>
+        </div>
+      <% elsif flash[:error] %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <h2>Book This Pokemon?</h2>
+      <p><%= @pokemon.name  %></p>
+      <%= simple_form_for [@pokemon, @booking] do |f| %>
+        <%= f.input :start_date, as: :string, input_html: { data:{ controller: 'datepicker' } } %>
+        <%= f.input :end_date, as: :string, input_html: { data:{ controller: 'datepicker' } } %>
+        <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= link_to "Back to the list", pokemons_path %>
+
+
+</div>
