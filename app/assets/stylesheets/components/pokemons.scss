@@ -1,5 +1,23 @@
-.carousel-control-prev-icon, .carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5); /* couleur de fond des flèches */
-  width: 40px; /* taille des flèches */
-  height: 40px; /* hauteur des flèches */
+// .carousel-control-prev-icon, .carousel-control-next-icon {
+//   background-color: rgba(0, 0, 0, 0.5); /* couleur de fond des flèches */
+//   width: 40px; /* taille des flèches */
+//   height: 40px; /* hauteur des flèches */
+// }
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%; /* Réduit la largeur de la zone cliquable */
+}
+
+.carousel-control-prev {
+  left: -10px; /* Rapproche la flèche gauche */
+}
+
+.carousel-control-next {
+  right: -10px; /* Rapproche la flèche droite */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px; /* Taille des icônes */
+  height: 30px;
 }

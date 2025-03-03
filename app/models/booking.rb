@@ -9,3 +9,4 @@ class Booking < ApplicationRecord
 
   validates :total_price, presence: true
 end
+

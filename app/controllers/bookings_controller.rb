@@ -9,16 +9,26 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+
   def create
     @booking = Booking.new(booking_params)
     @booking.pokemon = @pokemon
     @booking.user = current_user
     @booking.status = "active"
-    @booking.total_price = (@booking.end_date - @booking.start_date + 1) * @pokemon.price_per_day
+
+    if @booking.end_date && @booking.start_date
+      @booking.total_price = (@booking.end_date - @booking.start_date + 1) * @pokemon.price_per_day
+    else
+      flash[:error] = "Please provide both start and end dates."
+      render "pokemons/show" and return
+    end
+
     if @booking.save
+      flash[:success] = "Booking created successfully."
       redirect_to pokemon_path(@pokemon)
     else
-      render :new, status: :unprocessable_entity
+      flash[:error] = "There was an error creating the booking."
+      render "pokemons/show", status: :unprocessable_entity
     end
   end
 
