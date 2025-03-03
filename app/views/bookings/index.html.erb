@@ -1,40 +1,38 @@
 <div class="container">
-  <h2 class="text-center my-4">Your current bookings</h2>
+  <h2>My current bookings</h2>
   <div class="row justify-content-center">
-    <% @bookings.each do |booking| %>
-      <div class="col-12 mb-4"> <!-- Chaque carte prend toute la largeur avec col-12 -->
-        <div class="card shadow-sm h-100"> <!-- Carte avec ombre et hauteur flexible -->
+    <div class="col-6">
+      <% @bookings.each do |booking| %>
+        <div class="pokemon-card flex-row my-3 rounded shadow-sm">
+          <% if booking.pokemon.photos.attached? %>
+            <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "pokemon-image", width: 120 %>
+          <% else %>
+
+            <p>No image available</p>
+          <% end %>
           <div class="card-body">
-            <% if booking.pokemon.photos.attached? %>
-              <div class="text-center mb-3">
-                <% booking.pokemon.photos.each do |photo| %>
-                  <%= image_tag photo, alt: booking.pokemon.name, class: "img-fluid rounded", width: 200 %>
-                <% end %>
-              </div>
-            <% else %>
-              <p class="text-center">No image available</p>
-            <% end %>
+            <h4 class="card-title">
+              <%= booking.pokemon.name %> - <%= booking.pokemon.element_type %>
+            </h4>
 
-            <h5 class="card-title text-center"><%= booking.pokemon.name %></h5>
-            <p class="card-text text-center"><%= booking.pokemon.element_type %></p>
-
-            <p class="text-center">
-              Starting from <%= booking.start_date %> to <%= booking.end_date %>.<br>
+            <p>
+              Booking starts from <%= booking.start_date %> to <%= booking.end_date %>.
+              <br>
               Total price: <%= booking.total_price %>€
             </p>
 
-            <div class="text-center">
-              <% if booking.status == "active" %>
-                <%= link_to "Cancel booking", cancel_booking_path(booking),
-                    class: "btn btn-danger", data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
-                
+            <%= link_to "View Pokemon", pokemon_path(booking.pokemon), class: "btn btn-outline-secondary btn-sm" %>
 
-
-              <% else %>
-                <i>Cancelled</i>
-              <% end %>
-            </div>
+            <% if booking.status == "active" %>
+              <%= link_to "Cancel",
+                  cancel_booking_path(booking),
+                  class: "btn btn-outline-danger btn-sm",
+                  data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
+            <% else %>
+              <i>Cancelled</i>
+            <% end %>
           </div>
+
         </div>
       </div>
     <% end %>
