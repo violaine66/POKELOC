@@ -1,36 +1,70 @@
-<h2><%= @pokemon.name %> - <%= @pokemon.element_type %></h2>
+<div class="pokemon-container-show d-flex justify-content-center">
+
+  <div class="pokemon-card w-60">
+     <h2><%= @pokemon.name %> - <%= @pokemon.element_type %></h2>
 
 
-<% if @pokemon.photos.attached? %>
-  <div id="pokemonCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
-        <div class="carousel-item <%= 'active' if index == 0 %>">
-          <%= image_tag rails_blob_path(photo, only_path: true), alt: @pokemon.name, class: "pokemon-image d-block w-100", style: "max-height: 200px; object-fit: contain;" %>
+      <% if @pokemon.photos.attached? %>
+        <div id="pokemonCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @pokemon.photos.last(2).each_with_index do |photo, index| %>
+              <div class="carousel-item <%= 'active' if index == 0 %>">
+                <%= image_tag rails_blob_path(photo, only_path: true), alt: @pokemon.name, class: "pokemon-image d-block w-50", style: "max-height: 200px; object-fit: contain;" %>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Flèche de navigation précédente -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+            <!-- Flèche de navigation suivante -->
+          <button class="carousel-control-next" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
         </div>
-      <% end %>
-    </div>
-    <!-- Flèche de navigation précédente -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <!-- Flèche de navigation suivante -->
-    <button class="carousel-control-next" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+        <% else %>
+          <p>No image available</p>
+        <% end %>
+
+        <p><strong>Description :</strong> <%= @pokemon.description %></p>
+        <p><strong>Address :</strong> <%= @pokemon.address %></p>
+        <p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
+
   </div>
-<% else %>
-  <p>No image available</p>
-<% end %>
 
+    <%# Formulaire de réservation %>
+    <div class="booking w-40">
+      <div class="new-booking">
+        <% if flash[:success] %>
+          <div class="alert alert-success">
+            <%= flash[:success] %>
+          </div>
+        <% elsif flash[:error] %>
+          <div class="alert alert-danger">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
 
+        <h2>Book This Pokemon ?</h2>
 
+        <p><%= @pokemon.name  %> - <%= @pokemon.element_type %></p>
+          <%= simple_form_for [@pokemon, @booking] do |f| %>
+              <%= f.input :start_date,
+                          as: :string,
+                          input_html: { data:{ controller: 'datepicker' }
+                          } %>
+              <%= f.input :end_date,
+                          as: :string,
+                          input_html: { data:{ controller: 'datepicker' }
+                          } %>
+              <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
+              <% end %>
+      </div>
+    </div>
 
-
-<p><strong>Description :</strong> <%= @pokemon.description %></p>
-<p><strong>Address :</strong> <%= @pokemon.address %></p>
-<p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
+  </div>
 
 <%= link_to "Back to the list", pokemons_path %>

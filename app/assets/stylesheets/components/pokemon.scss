@@ -1,0 +1,35 @@
+.pokemon-container-show {
+  width: 100%;
+}
+
+.pokemon-card {
+  flex: 0 0 60%; /* 60% de la largeur */
+}
+
+.booking {
+  flex: 0 0 40%; /* 40% de la largeur */
+}
+
+@media (max-width: 768px) {
+  .pokemon-card, .booking {
+    flex: 0 0 100%; /* Sur mobile, chaque élément prend toute la largeur */
+  }
+}
+.booking {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.booking .container {
+  width: 100%;
+}
+
+.booking h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.booking .btn {
+  width: 100%;
+}
