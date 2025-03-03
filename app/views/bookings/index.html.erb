@@ -7,6 +7,7 @@
           <% if booking.pokemon.photos.attached? %>
             <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "pokemon-image", width: 120 %>
           <% else %>
+
             <p>No image available</p>
           <% end %>
           <div class="card-body">
