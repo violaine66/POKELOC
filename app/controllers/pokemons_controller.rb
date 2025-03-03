@@ -6,7 +6,19 @@ class PokemonsController < ApplicationController
 
   def show
     @pokemon = Pokemon.find(params[:id])
-    @booking = Booking.new 
+    @booking = Booking.new
+    if @pokemon.latitude && @pokemon.longitude
+      @markers = [
+        {
+          lat: @pokemon.latitude,
+          lng: @pokemon.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: { pokemon: @pokemon })
+        }
+      ]
+    else
+      @markers = []
+    end
+
   end
 
   def new
