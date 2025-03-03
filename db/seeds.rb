@@ -17,6 +17,7 @@ puts 'Cleaning database...'
 Booking.destroy_all
 Pokemon.destroy_all
 User.destroy_all
+Review.destroy_all
 
 puts "Creating user..."
 user1 = User.create!(name: "Professeur Chen", email: "professeur.chen@pokemon.com", password: "password")
@@ -78,6 +79,7 @@ price_per_day = rand(50..100)
     price_per_day: price_per_day,
     user: [user1, user2].sample,
     description: description
+    # reviews: [Review.new(rating: rand(1..5), comment: "Super Pokémon !"), Review.new(rating: rand(1..5), comment: "Je recommande !")].sample(rand(0..2))
   )
 
   image_urls = [
