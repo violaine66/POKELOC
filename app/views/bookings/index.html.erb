@@ -1,40 +1,66 @@
-<div class="container mt-3"><h2>My current bookings</h2>
+<div class="container mt-3">
+  <h2>My current bookings</h2>
   <div class="row justify-content-center">
-    <div class="col-6">
-      <% @bookings.each do |booking| %>
-       <div class="pokemon-card flex-row my-3 rounded shadow-sm">
-          <% if booking.pokemon.photos.attached? %>
-            <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "pokemon-image", width: 120 %>
-          <% else %>
+    <!-- Pour chaque réservation, afficher une carte qui occupe toute la ligne -->
+    <% @bookings.each do |booking| %>
+      <div class="col-12 mb-4"> <!-- Une carte par ligne (col-12) -->
+        <div class="card shadow-sm h-100 d-flex flex-row"> <!-- Ajout de flex-row pour aligner image et texte horizontalement -->
 
-            <p>No image available</p>
-          <% end %>
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= booking.pokemon.name %> - <%= booking.pokemon.element_type %>
-            </h4>
-
-            <p>
-              Booking starts from <%= booking.start_date %> to <%= booking.end_date %>.
-              <br>
-              Total price: <%= booking.total_price %>€
-            </p>
-
-            <%= link_to "View Pokemon", pokemon_path(booking.pokemon), class: "btn btn-outline-secondary btn-sm" %>
-
-            <% if booking.status == "active" %>
-              <%= link_to "Cancel",
-                  cancel_booking_path(booking),
-                  class: "btn btn-outline-danger btn-sm",
-                  data: {turbo_method: :patch, turbo_confirm: "Are you sure?"} %>
-              <%= link_to "Add a review", new_booking_review_path(booking), class:"text-decoration-none text-dark  btn btn-outline-secondary btn-sm ms-1" %>
+          <!-- Vérification de l'existence d'une photo associée au Pokémon -->
+          <div class="col-4 p-0"> <!-- La colonne de l'image, ici on donne une largeur de 4/12 (33%) -->
+            <% if booking.pokemon.photos.attached? %>
+              <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "card-img-left img-fluid" %> <!-- Utilisation de img-fluid pour l'image -->
             <% else %>
-              <i>Cancelled</i>
+              <div class="card-img-left d-flex justify-content-center align-items-center" style="height: 200px; background-color: #f8f9fa;">
+                <p class="m-0">No image available</p>
+              </div>
             <% end %>
           </div>
 
+          <!-- Texte à droite -->
+          <div class="col-8 p-3"> <!-- La colonne du texte, ici on donne une largeur de 8/12 (66%) -->
+            <div class="card-body">
+              <h4 class="card-title">
+                <%= booking.pokemon.name %> - <%= booking.pokemon.element_type %>
+              </h4>
+
+              <p>
+                Booking starts from <%= booking.start_date %> to <%= booking.end_date %>.
+                <br>
+                Total price: <%= booking.total_price %>€
+              </p>
+
+              <!-- Lien vers le détail du Pokémon -->
+
+              <%= link_to "View Pokemon", pokemon_path(booking.pokemon), class: "btn btn-outline-secondary btn-sm" %>
+
+              <% if booking.status == "active" %> <!-- Si la réservation est active -->
+              <!-- Lien pour ajouter une revue pour cette réservation -->
+                <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-outline-secondary btn-sm" %>
+                <!-- Lien pour annuler la réservation -->
+                <%= link_to "Cancel",
+                            cancel_booking_path(booking),
+                            class: "btn btn-outline-danger btn-sm",
+                            data: { turbo_method: :patch, turbo_confirm: "Are you sure?" } %>
+
+
+
+                <h5 class ="mt-3">Avis sur cette réservation :</h5>
+                <!-- Affichage des avis associés à la réservation -->
+                <% booking.reviews.each do |review| %>
+                  <div class="review">
+                    <span><strong>rating:</strong> <%= review.rating %> / 5  <strong> Comment:</strong> <%= review.comment %></span>
+
+                  </div>
+                <% end %>
+              <% else %>
+                <i>Cancelled</i>
+              <% end %>
+            </div>
+          </div>
+
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %> <!-- Fin de la boucle sur @bookings -->
   </div>
 </div>
