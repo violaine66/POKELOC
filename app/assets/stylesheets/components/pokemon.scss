@@ -13,15 +13,15 @@
   position: relative;
 }
 .pokemon-show-bg{
-  background-color:rgb(73, 90, 114);
+  // background-color:rgb(73, 90, 114);
 }
 .pokemon-container-show {
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(73, 90, 114)   ;
+  // background-color: rgb(73, 90, 114)   ;
   position: relative;
   top: -50px;
-  // gap: 20px;
+  gap: 20px;
   border-radius: 8px;
 }
 .pokemon-card {
@@ -51,7 +51,8 @@
 .new-booking {
   padding: 20px;
   border-radius: 5px;
-  background-color:rgb(126, 185, 211);
+  // background-color:rgb(126, 185, 211);
+  background-color: rgb(247, 241, 215);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .booking .container {
