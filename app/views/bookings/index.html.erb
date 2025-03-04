@@ -31,24 +31,26 @@
               </p>
 
               <!-- Lien vers le détail du Pokémon -->
+
               <%= link_to "View Pokemon", pokemon_path(booking.pokemon), class: "btn btn-outline-secondary btn-sm" %>
 
               <% if booking.status == "active" %> <!-- Si la réservation est active -->
+              <!-- Lien pour ajouter une revue pour cette réservation -->
+                <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-outline-secondary btn-sm" %>
                 <!-- Lien pour annuler la réservation -->
                 <%= link_to "Cancel",
                             cancel_booking_path(booking),
                             class: "btn btn-outline-danger btn-sm",
                             data: { turbo_method: :patch, turbo_confirm: "Are you sure?" } %>
 
-                <!-- Lien pour ajouter une revue pour cette réservation -->
-                <%= link_to "Add a review", new_booking_review_path(booking), class: "text-decoration-none text-dark btn btn-outline-secondary btn-sm ms-1" %>
 
-                <h3>Avis sur cette réservation :</h3>
+
+                <h5 class ="mt-3">Avis sur cette réservation :</h5>
                 <!-- Affichage des avis associés à la réservation -->
                 <% booking.reviews.each do |review| %>
                   <div class="review">
-                    <p><strong>Note:</strong> <%= review.rating %> / 5</p>
-                    <p><strong>Commentaire:</strong> <%= review.comment %></p>
+                    <span><strong>rating:</strong> <%= review.rating %> / 5  <strong> Comment:</strong> <%= review.comment %></span>
+
                   </div>
                 <% end %>
               <% else %>
@@ -62,4 +64,3 @@
     <% end %> <!-- Fin de la boucle sur @bookings -->
   </div>
 </div>
-
