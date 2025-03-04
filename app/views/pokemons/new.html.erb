@@ -11,9 +11,9 @@
             <%= f.input :price_per_day %>
             <%= f.input :description %>
             <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Choose Photos" %>
-            <%= f.button :submit %>
+            <%= f.button :submit, class:"btn btn-primary mb-3" %>
             <% end %>
-            <%= link_to "back", pokemons_path %>
+            <%= link_to "back", pokemons_path, class:"text-decoration-none" %>
         </div>
       </div>
     </div>
