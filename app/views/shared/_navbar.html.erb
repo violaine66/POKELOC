@@ -1,8 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= "Logo" %>
-    <% end %>
+   <img src="/images/pokeball.png" alt="logo" class="navbar-brand" style="width: 50px; height: auto;"/>
+
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,6 +13,8 @@
           <li class="nav-item active">
             <%= link_to "See Pokemons", pokemons_path, class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%= link_to "Add a Pokemon", new_pokemon_path, class: "nav-link" %>
           <li class="nav-item">
             <%= link_to "Bookings", bookings_path, class: "nav-link" %>
           </li>

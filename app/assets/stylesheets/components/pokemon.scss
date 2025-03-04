@@ -1,51 +1,46 @@
 .banner{
-  background-size: contain;  /* Cela permet à l'image de s'ajuster tout en maintenant ses proportions */
-  background-position: center;  /* Centrer l'image */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
 }
+.pokemon-show-bg{
+  background-color: rgb(222, 185, 102);
+}
 .pokemon-container-show {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  background-color:  rgb(222, 185, 102);
   position: relative;
   top: -50px;
-  gap: 20px;
+  // gap: 20px;
+  border-radius: 8px;
 }
 .pokemon-card {
-  background: white;
+  display: flex;
+  background-color:rgb(226, 134, 100) ;
+  gap: 20px;
+  flex: 3;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
-
 .map-container {
   filter: saturate(1.5);
 }
-.pokemon-container-show {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+#map {
+  border-radius: 8px;
 }
-
-.pokemon-card {
-  display: flex;
-  gap: 20px;
-  flex: 3;
-}
-
 .pokemon-image-container {
   flex: 1;
 }
-
 .pokemon-info {
   flex: 2;
 }
@@ -53,16 +48,19 @@
 .booking {
   flex: 1;
 }
-#map {
-  border-radius: 8px;
-}
 .new-booking {
   padding: 20px;
-  border-radius: 8px;
-  background-color: white;
+  border-radius: 5px;
+  background-color:rgb(250, 231, 134);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.booking .container {
+  width: 100%;
+}
+.booking h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
 @media (max-width: 767px) {
   .pokemon-card {
     flex-direction: column;
@@ -74,14 +72,4 @@
     width: 100%;
     margin-bottom: 20px;
   }
-}
-
-
-.booking .container {
-  width: 100%;
-}
-
-.booking h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
 }
