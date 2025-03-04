@@ -1,21 +1,21 @@
-<div class="container">
- <div class="new-pokemon w-50">
-  <h2 class = "my-3" >Add a new Pokemon</h2>
-    <%= simple_form_for @pokemon do |f| %>
-    <%= f.input :name %>
-    <%= f.input :element_type %>
-    <%= f.input :address%>
-    <%= f.input :price_per_day %>
-    <%= f.input :description %>
-
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.button :submit %>
-    <% end %>
-
-
-    <%= link_to "back", pokemons_path %>
-
+<div class="container m-3 ">
+  <div class="row d-flex justify-content-center ">
+    <div class="col-12 col-sm-8 col-md-6">
+      <div class="bg-white rounded p-3 shadow-sm">
+        <div class="new-pokemon ">
+          <h2 class = "my-3" >Add a new Pokemon</h2>
+            <%= simple_form_for @pokemon do |f| %>
+            <%= f.input :name %>
+            <%= f.input :element_type %>
+            <%= f.input :address%>
+            <%= f.input :price_per_day %>
+            <%= f.input :description %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Choose Photos" %>
+            <%= f.button :submit %>
+            <% end %>
+            <%= link_to "back", pokemons_path %>
+        </div>
+      </div>
+    </div>
   </div>
-
-
 </div>

@@ -1,6 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(rgba(139, 16, 16, 0.3), rgba(56, 13, 13, 0.3)), url('/images/pokeball.png')"></div>
+<div class="banner" style="background-image: url('/images/banner.jpg')"></div>
+<div class="pokemon-show-bg">
 <div class="container mb-4">
-  <div class="pokemon-container-show d-flex flex-column flex-lg-row justify-content-center mt-3">
+  <div class="pokemon-container-show d-flex flex-column flex-lg-row justify-content-center">
 
   <!-- Section Pokémon avec image et informations, qui sera en dessous sur les petits écrans -->
   <div class="pokemon-card w-100 h-100 mb-4 d-flex flex-column">
@@ -38,7 +39,7 @@
       </div>
 
       <!-- Section Informations -->
-      <div class="pokemon-info" style="flex: 2;">
+      <div class="pokemon-info" style="flex: 2; ms-2">
         <p><strong>Description :</strong> <%= @pokemon.description %></p>
         <p><strong>Address :</strong> <%= @pokemon.address %></p>
         <p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
@@ -74,10 +75,11 @@
       <% end %>
     </div>
   </div>
-  
+
 </div>
 
 <%= link_to "Back to the list", pokemons_path %>
 
 
+</div>
 </div>
