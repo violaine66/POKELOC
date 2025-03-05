@@ -9,6 +9,11 @@ export default class extends Controller {
   }
 
   connect() {
+    if (this.map) {
+      console.log("Carte déjà chargée, on stoppe ici !");
+      return;
+    }
+
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -34,8 +39,26 @@ export default class extends Controller {
     })
   }
   #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 12, duration: 0 })
+  const bounds = new mapboxgl.LngLatBounds();
+
+  if (this.markersValue.length === 0) {
+    console.log("Aucun marqueur trouvé, affichage par défaut.");
+    this.map.setZoom(2); // Zoom par défaut si aucun marqueur
+    return;
   }
+
+  this.markersValue.forEach(marker => {
+    if (marker.lng && marker.lat) { // Vérifie que les coordonnées existent
+      bounds.extend([marker.lng, marker.lat]);
+    }
+  });
+
+  if (this.markersValue.length === 1) {
+    this.map.setCenter([this.markersValue[0].lng, this.markersValue[0].lat]);
+    this.map.setZoom(12); // Zoom plus proche si un seul Pokémon
+  } else {
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 12, duration: 1000 });
+  }
+}
+
 }

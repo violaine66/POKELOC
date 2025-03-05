@@ -47,7 +47,7 @@
     </div>
 
     <!-- Carte Map sous les informations, prenant toute la largeur -->
-    <div  id="map" style="width: 100%; height: 400px; margin-top: 15px;"
+    <div  style="width: 100%; height: 400px; margin-top: 15px;"
          data-controller="map"
          data-map-markers-value="<%= @markers.to_json %>"
          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -74,7 +74,7 @@
         <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
       <% end %>
     </div>
-    
+
   </div>
 
 </div>
