@@ -7,7 +7,7 @@ class PokemonsController < ApplicationController
         lat: pokemon.latitude,
         lng: pokemon.longitude,
         info_window_html:  render_to_string(partial: "info_window", locals: {pokemon: pokemon}),
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker", locals: { pokemon: pokemon })
       }
     end
   end
@@ -25,7 +25,7 @@ class PokemonsController < ApplicationController
           lat: @pokemon.latitude,
           lng: @pokemon.longitude,
           info_window_html: render_to_string(partial: "info_window", locals: { pokemon: @pokemon }),
-          marker_html: render_to_string(partial: "marker")
+          marker_html: render_to_string(partial: "marker",  locals: { pokemon: @pokemon })
         }
       ]
     else
