@@ -46,12 +46,30 @@
       </div>
     </div>
 
-    <!-- Carte Map sous les informations, prenant toute la largeur -->
-    <div  style="width: 100%; height: 400px; margin-top: 15px;"
-         data-controller="map"
-         data-map-markers-value="<%= @markers.to_json %>"
-         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="d-flex flex-column flex-lg-row" style="flex: 1;">
+      <div  style="width: 50%; height: 400px; margin-top: 15px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
+      <div class="pokemon-reviews mt-3 mx-4" style="flex: 2; ms-2">
+        <h4>Reviews</h4>
+        <% @pokemon.reviews.each do |review| %>
+          <div class="pokemon-review mb-2" >
+            <span><strong>From:</strong> <%= review.booking.user.name %></span>
+            <br>
+            <span><strong>Rating:</strong> <%= raw('<i class="fa-solid fa-star"></i>') * review.rating %> · <%= review.created_at.strftime("%B %Y") %></span>
+            <br>
+            <span><strong>Comment:</strong> <%= review.comment %></span>
+          </div>
+        <% end %>
+      </div>
+
     </div>
+    <!-- Carte Map sous les informations, prenant toute la largeur -->
+
+
   </div>
     <!-- Section de réservation (Booking) -->
   <div class="booking w-100 w-lg-25 mb-4 mb-lg-0" style="position: relative;">
