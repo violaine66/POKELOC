@@ -44,15 +44,6 @@
                             data: { turbo_method: :patch, turbo_confirm: "Are you sure?" } %>
 
 
-
-                <h5 class ="mt-3">Avis sur cette réservation :</h5>
-                <!-- Affichage des avis associés à la réservation -->
-                <% booking.reviews.each do |review| %>
-                  <div class="review">
-                    <span><strong>rating:</strong> <%= review.rating %> / 5  <strong> Comment:</strong> <%= review.comment %></span>
-
-                  </div>
-                <% end %>
               <% else %>
                 <i>Cancelled</i>
               <% end %>
