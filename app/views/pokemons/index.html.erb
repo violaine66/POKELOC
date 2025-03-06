@@ -3,8 +3,8 @@
       <div class="pokemons-grid-index my-4 ms-4">
         <% @pokemons.each do |pokemon| %>
         <%= link_to pokemon_path(pokemon), class:"text-decoration-none text-dark" do %>
-          <div class="pokemon-index-card py-3 px-4 ">
-            <div class="cercles d-flex align-items-center">
+          <div class="pokemon-index-card py-3 px-4 d-flex flex-column" style="height: 100%;">
+            <div class="cercles d-flex align-items-center w-100 justify-content-start">
                   <div class="cercle d-flex ">
                       <i class="fa-solid fa-circle  pe-3" id="on"></i>
                   <i class="fa-solid fa-circle text-danger pe-2"></i>
@@ -16,19 +16,20 @@
               <p><h3 class="name-element mb-3"><%= pokemon.name %> - <%= pokemon.element_type %></h3></p>
                 <div class="pokemon-index-image my-2 bg-light">
                   <% if pokemon.photos.attached? %>
-                    <%= image_tag pokemon.photos.first, alt: pokemon.name, class: "pokemon-image", width: 135, height: 135 %>
+                    <%= image_tag pokemon.photos.first, alt: pokemon.name, class: "pokemon-image umg-fluid", width: 135, height: 135 %>
                   <% else %>
                     <p>No image available</p>
                   <% end %>
                 </div>
             </div>
-            <div class="details d-flex justify-content-between align-items-center"">
-              <div class="adress-price text-start">
-                <p class="my-3"><i class="fa-solid fa-location-dot pe-1"></i> <%= pokemon.address %></p>
+            <div class="flex-grow-1"></div>
+            <div class="details d-flex justify-content-between align-items-end flew-wrap" >
+              <div class="adress-price text-start " style="min-height: 50px;">
+                <p><i class="fa-solid fa-location-dot pe-1"></i> <%= pokemon.address %></p>
                 <p><%= pokemon.price_per_day %>€/day</p>
               </div>
-              <div class="details position-absolute bottom-0 end-0 d-flex align-items-center mb-3 me-3">
-              <button type="button" class="btn btn-success" style="height: 30px; width: 70px"></button>
+              <div class="d-flex align-items-center mt-2">
+              <button type="button" class="btn btn-success d-flex align-items-center justify-content-center" style="height: 30px; width: 70px"></button>
              <i class="fa-sharp fa-solid fa-plus fa-3x text-black ms-2"></i>
              </div>
            </div>
