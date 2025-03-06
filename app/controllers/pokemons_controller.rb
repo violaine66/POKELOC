@@ -31,7 +31,6 @@ class PokemonsController < ApplicationController
     else
       @markers = []
     end
-
   end
 
   def new
@@ -48,18 +47,19 @@ class PokemonsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def search
+    if params[:query].present?
+      @pokemons = Pokemon.search_by_name_type_and_address(params[:query])
+    else
+      @pokemons = Pokemon.all
+    end
+    render :index
+  end
+
     private
 
     def pokemon_params
       params.require(:pokemon).permit(:name, :element_type, :address, :price_per_day, :description, photos: [])
-    end
-
-    def search
-      if params[:query].present?
-        @pokemons = Pokemon.search_by_name_type_and_address(params[:query])
-      else
-        @pokemons = Pokemon.all
-      end
-      render :index
     end
 end
