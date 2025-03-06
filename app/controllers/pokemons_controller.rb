@@ -1,8 +1,16 @@
 class PokemonsController < ApplicationController
 
   def index
-    @pokemons = Pokemon.all
+    if params[:query].present?
+      @pokemons = Pokemon.where("name ILIKE ? OR element_type ILIKE ? OR address ILIKE ?",
+                              "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%")
+
+    else
+       @pokemons = Pokemon.all
+    end
+
     @markers = @pokemons.geocoded.map do |pokemon|
+
       {
         lat: pokemon.latitude,
         lng: pokemon.longitude,
@@ -31,6 +39,7 @@ class PokemonsController < ApplicationController
     else
       @markers = []
     end
+
   end
 
   def new
@@ -62,4 +71,6 @@ class PokemonsController < ApplicationController
     def pokemon_params
       params.require(:pokemon).permit(:name, :element_type, :address, :price_per_day, :description, photos: [])
     end
+
+
 end

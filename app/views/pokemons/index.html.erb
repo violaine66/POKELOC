@@ -1,10 +1,11 @@
 <!-- Conteneur de recherche avec le même background -->
 <div class="search-container p-3">
-  <h2>Rechercher un Pokémon</h2>
+
+    <h2>Search Pokemon</h2>
 
   <%= form_with url: search_pokemons_path, method: :get, local: true, class: "d-flex" do %>
-    <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Nom, Type ou Adresse..." %>
-    <%= submit_tag "Rechercher", class: "btn btn-primary" %>
+    <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Name, element or address..." %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
 
@@ -61,7 +62,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <p class="mt-3">Aucun Pokémon trouvé pour cette recherche.</p>
+        <p class="mt-3">No Pokémon found for this search</p>
       <% end %>
     </div>
   </div>
