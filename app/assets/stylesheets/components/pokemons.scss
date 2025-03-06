@@ -1,3 +1,7 @@
+.search-container {
+  background-color: rgb(70, 90, 128);
+
+}
 .index-contain {
   background-color: rgb(70, 90, 128);
   display: flex;
@@ -29,6 +33,10 @@
     grid-template-columns: repeat(1, 1fr); // 1 carte par ligne sur mobile
     grid-template-rows: auto; // S'adapte au contenu
   }
+
+}
+.mb-4.search-bar {
+  background-color: rgb(70, 90, 128);
 }
 .pokemon-index-card{
   display: block;
@@ -65,6 +73,7 @@
 .adress-price{
   // color:rgb(222, 185, 102);
   color: rgb(203, 118, 63);
+  min-height: 60px;
 }
 
 .map {
@@ -87,4 +96,3 @@
   color:rgb(42, 181, 187);
   font-size: 28px;
 }
-

@@ -12,4 +12,11 @@ class Pokemon < ApplicationRecord
   validates :address, presence: true
   validates :price_per_day, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :description, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_type_and_address,
+    against: [:name, :element_type, :address],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
