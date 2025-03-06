@@ -55,14 +55,18 @@
 
       <div class="pokemon-reviews mt-3 mx-4" style="flex: 2; ms-2">
         <h4>Reviews</h4>
-        <% @pokemon.reviews.each do |review| %>
-          <div class="pokemon-review mb-2" >
-            <span><strong>From:</strong> <%= review.booking.user.name %></span>
-            <br>
-            <span><strong>Rating:</strong> <%= raw('<i class="fa-solid fa-star"></i>') * review.rating %> · <%= review.created_at.strftime("%B %Y") %></span>
-            <br>
-            <span><strong>Comment:</strong> <%= review.comment %></span>
-          </div>
+        <% if @pokemon.reviews.any? %>
+          <% @pokemon.reviews.each do |review| %>
+            <div class="pokemon-review mb-2" >
+              <span><strong>From:</strong> <%= review.booking.user.name %></span>
+              <br>
+              <span><strong>Rating:</strong> <%= raw('<i class="fa-solid fa-star"></i>') * review.rating %> · <%= review.created_at.strftime("%B %Y") %></span>
+              <br>
+              <span><strong>Comment:</strong> <%= review.comment %></span>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No reviews yet</p>
         <% end %>
       </div>
 
