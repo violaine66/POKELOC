@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :pokemons, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:new, :create]
   end
-  
+
   resources :bookings do
     resources :reviews, only: [:new, :create]
   end
@@ -23,4 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :pokemons do
+    collection do
+      get :search
+    end
+  end
 end
