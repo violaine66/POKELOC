@@ -30,7 +30,22 @@
 
 <% end %>
 
-</div>
+<h2>Rechercher un Pokémon</h2>
 
+<%= form_with url: search_pokemons_path, method: :get, local: true do %>
+  <%= label_tag :query, "Nom, Type ou Adresse :" %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Rechercher" %>
+<% end %>
 
-</div>
+<h2>Résultats :</h2>
+
+<% @pokemons.each do |pokemon| %>
+  <div>
+    <h3><%= pokemon.name %> - <%= pokemon.element_type %></h3>
+    <p>Adresse : <%= pokemon.address %></p>
+    <p>Prix : <%= pokemon.price_per_day %> €</p>
+    <%= link_to "Voir", pokemon_path(pokemon) %>
+  </div>
+  <hr>
+<% end %>
