@@ -9,10 +9,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get 'pokemons/search', to: 'pokemons#index', as: :search_pokemons
+
+
   resources :pokemons, only: [:index, :show, :new, :create] do
     resources :bookings, only: [:new, :create]
   end
-  
+
   resources :bookings do
     resources :reviews, only: [:new, :create]
   end
@@ -22,5 +25,4 @@ Rails.application.routes.draw do
       patch :cancel
     end
   end
-
 end

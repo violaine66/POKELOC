@@ -39,6 +39,24 @@
 //   border-radius: 8px;
 
 // }
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%; /* Réduit la largeur de la zone cliquable */
+}
+
+.carousel-control-prev {
+  left: -10px; /* Rapproche la flèche gauche */
+}
+
+.carousel-control-next {
+  right: -10px; /* Rapproche la flèche droite */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px; /* Taille des icônes */
+  height: 30px;
+}
 .pokemon-image-container {
   flex: 1.5;
 }
@@ -74,4 +92,12 @@
     width: 100%;
     margin-bottom: 20px;
   }
+}
+.pokemon-info-card{
+  border: 1px solid bisque;
+  border-radius: 48px 0;
+  background-color: bisque;
+  font-size: 16px;
+  color: rgb(203, 118, 63);
+  min-height: 200px;
 }

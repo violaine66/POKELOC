@@ -2,8 +2,8 @@ class BookingsController < ApplicationController
   before_action :set_pokemon, only: %i[new create]
 
   def index
-    @bookings = current_user.bookings
-    @reviews = Review.all 
+    @bookings = current_user.bookings.order(:start_date)
+    @grouped_bookings = @bookings.group_by { |booking| booking.start_date.strftime("%B %Y") }
   end
 
   def new

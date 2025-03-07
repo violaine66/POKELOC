@@ -1,8 +1,16 @@
 class PokemonsController < ApplicationController
 
   def index
-    @pokemons = Pokemon.all
+    if params[:query].present?
+      @pokemons = Pokemon.where("name ILIKE ? OR element_type ILIKE ? OR address ILIKE ?",
+                              "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%")
+
+    else
+       @pokemons = Pokemon.all
+    end
+
     @markers = @pokemons.geocoded.map do |pokemon|
+
       {
         lat: pokemon.latitude,
         lng: pokemon.longitude,
@@ -48,9 +56,21 @@ class PokemonsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def search
+    if params[:query].present?
+      @pokemons = Pokemon.search_by_name_type_and_address(params[:query])
+    else
+      @pokemons = Pokemon.all
+    end
+    render :index
+  end
+
     private
 
     def pokemon_params
       params.require(:pokemon).permit(:name, :element_type, :address, :price_per_day, :description, photos: [])
     end
+
+
 end

@@ -39,19 +39,46 @@
       </div>
 
       <!-- Section Informations -->
-      <div class="pokemon-info" style="flex: 2; ms-2">
-        <p><strong>Description :</strong> <%= @pokemon.description %></p>
-        <p><strong>Address :</strong> <%= @pokemon.address %></p>
-        <p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
+
+      <div class="pokemon-info">
+        <div class="pokemon-info-card text-center ms-2">
+        <strong><p class="mt-4 mx-2"> <%= @pokemon.description %></p></strong>
+
+        <p><i class="fa-solid fa-location-dot pe-1"></i><%= @pokemon.address %></p>
+        <p><%= @pokemon.price_per_day %>€/day</p>
+
+        </div>
       </div>
     </div>
 
-    <!-- Carte Map sous les informations, prenant toute la largeur -->
-    <div  style="width: 100%; height: 400px; margin-top: 15px;"
-         data-controller="map"
-         data-map-markers-value="<%= @markers.to_json %>"
-         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="d-flex flex-column flex-lg-row" style="flex: 1;">
+      <div  style="width: 50%; height: 400px; margin-top: 15px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
+      <div class="pokemon-reviews mt-3 mx-4" style="flex: 2; ms-2">
+        <h4>Reviews</h4>
+        <% if @pokemon.reviews.any? %>
+          <% @pokemon.reviews.each do |review| %>
+            <div class="pokemon-review mb-2" >
+              <span><strong>From:</strong> <%= review.booking.user.name %></span>
+              <br>
+              <span><strong>Rating:</strong> <%= raw('<i class="fa-solid fa-star"></i>') * review.rating %> · <%= review.created_at.strftime("%B %Y") %></span>
+              <br>
+              <span><strong>Comment:</strong> <%= review.comment %></span>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No reviews yet</p>
+        <% end %>
+      </div>
+
     </div>
+    <!-- Carte Map sous les informations, prenant toute la largeur -->
+
+
   </div>
     <!-- Section de réservation (Booking) -->
   <div class="booking w-100 w-lg-25 mb-4 mb-lg-0" style="position: relative;">
