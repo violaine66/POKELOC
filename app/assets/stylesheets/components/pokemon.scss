@@ -78,6 +78,10 @@
   font-size: 1.5rem;
   margin-bottom: 15px;
 }
+.bg-white{
+  background-color: bisque;
+  border : 2px solid rgb(160, 192, 252)
+}
 @media (max-width: 767px) {
   .pokemon-card {
     flex-direction: column;
@@ -97,4 +101,10 @@
   font-size: 16px;
   color: rgb(203, 118, 63);
   min-height: 200px;
+}
+.bookings-container{
+  background: linear-gradient(  rgb(63, 94, 141), rgb(126, 185, 211), rgb(210, 224, 251));
+}
+.new{
+  background: linear-gradient(rgb(210, 224, 251), rgb(126, 185, 211), rgb(63, 94, 141));
 }

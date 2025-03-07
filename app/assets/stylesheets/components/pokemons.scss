@@ -1,8 +1,11 @@
 
 .search-container {
-  // background-color: rgb(70, 90, 128);
-  background: linear-gradient(to right, rgb(70, 90, 128), rgb(200, 220, 255));
+  background: linear-gradient(  rgb(63, 94, 141), rgb(126, 185, 211), rgb(210, 224, 251));
 }
+.form-control{
+  color:bisque;
+}
+
 .search-container h2{
   font-family: "Jersey 20", sans-serif;
   font-weight: bolder;
@@ -11,7 +14,6 @@
   color:bisque;
 }
 .index-contain {
-  // background-color: rgb(70, 90, 128);
   background: linear-gradient(to top right, rgb(255, 255, 200),  rgb(200, 220, 255),rgb(70, 90, 128));
   display: flex;
   flex-direction: row;
@@ -93,6 +95,7 @@
   color:rgb(42, 181, 187);
   font-size: 28px;
 }
+
 // reponsive
 @media (max-width: 576px) {
   .cercles {
