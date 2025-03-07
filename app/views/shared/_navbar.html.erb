@@ -6,29 +6,34 @@
     <% end %>
 
     <div id="logo-pokeloc" class="navbar-brand">
-        <img src="/images/logo.png" alt="Logo Pokeloc">
+        <img src="/images/logo.png" alt="Logo Pokeloc" style="width:150px; height:auto;">
     </div>
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <ul class="navbar-nav d-flex align-items-center">
+      <ul class="navbar-nav d-flex align-items-center me-2 fs-4">
 
         <% if user_signed_in? %>
-
-          <li class="nav-item">
-            <%= link_to "Bookings", bookings_path, class: "nav-link text-white" %>
+          <!-- Menu hamburger avec les liens, sans le lien "Log out" -->
+          <li class="nav-item me-2">
+            <a href="#" class="nav-link text-white" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-bars"></i> <!-- Icône de menu -->
+            </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Bookings", bookings_path, class: "dropdown-item" %>
+                <%= link_to "See Pokemons", pokemons_path, class: "dropdown-item " %>
+                <%= link_to "Add a Pokemon", new_pokemon_path, class: "dropdown-item " %>
+              </div>
           </li>
 
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-user text-white"id ="avatar"alt= "dropdown menu"></i>
             </a>
-
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-              <%= link_to "See Pokemons", pokemons_path, class: "dropdown-item"%>
-              <%= link_to "Add a Pokemon", new_pokemon_path, class: "dropdown-item"%>
+
             </div>
           </li>
 
