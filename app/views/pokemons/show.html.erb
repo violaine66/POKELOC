@@ -78,8 +78,6 @@
 
     </div>
     <!-- Carte Map sous les informations, prenant toute la largeur -->
-
-
   </div>
     <!-- Section de réservation (Booking) -->
   <div class="booking w-100 w-lg-25 mb-4 mb-lg-0" style="position: relative;">
@@ -96,11 +94,16 @@
 
       <h2>Book This Pokemon?</h2>
       <p><%= @pokemon.name  %></p>
+      <div data-controller="calculate-total-price" class="form">
       <%= simple_form_for [@pokemon, @booking] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { data:{ controller: 'datepicker' } } %>
-        <%= f.input :end_date, as: :string, input_html: { data:{ controller: 'datepicker' } } %>
+        <%= f.input :start_date, as: :string, input_html: { data:{ controller: 'datepicker' ,  calculate_total_price_target: "startdate", action:"change->calculate-total-price#calculatePrice"}  } %>
+        <%= f.input :end_date, as: :string, input_html: { data:{ controller: 'datepicker', calculate_total_price_target: "enddate", action:"change->calculate-total-price#calculatePrice"}}  %>
+        <%= hidden_field_tag :price_per_day, @pokemon.price_per_day, data: { calculate_total_price_target: "pricePerDay" } %>
+          <p><%= @pokemon.price_per_day %> €/day</p>
+          <p><strong>Total Price: <span data-calculate-total-price-target="totalprice" style="display: none;">0 €</span></strong></p>
         <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
       <% end %>
+      </div>
     </div>
 
   </div>
