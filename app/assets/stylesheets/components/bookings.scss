@@ -1,0 +1,27 @@
+.custom-card {
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  border-color:rgb(253, 203, 142);
+  border-width: 5px;
+  border-radius: 10px;
+  background-color:rgb(160, 192, 252);
+}
+
+.bookings-container {
+  background-color:rgb(70, 90, 128);
+}
+
+.bookings-container h2 {
+  font-family: "Jersey 20", sans-serif;
+  font-weight: bolder;
+  font-size: 40px;
+  letter-spacing: 1px;
+  color:bisque;
+}
+
+.bookings-container h3 {
+  font-family: "Jersey 20", sans-serif;
+  font-weight: bolder;
+  font-size: 30px;
+  // color: rgb(222, 185, 102);
+  color: rgb(75, 189, 170);
+}
