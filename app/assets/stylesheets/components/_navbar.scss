@@ -1,11 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(1, 20, 71);
+  background: rgba(0, 24, 90, 0.7);
   color: white;
-  // font-family:"Jersey 20", sans-serif;
+  font-family:"inria", serif;
   // font-weight: 400;
   // font-style: normal;
-  // font-size: 24px;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -18,4 +19,12 @@
 #avatar {
   font-size: 1.5rem;
   margin-left: 10px;
+}
+
+.navbar-lewagon * {
+  opacity: 1;
+}
+
+#logo-pokeloc{
+
 }
