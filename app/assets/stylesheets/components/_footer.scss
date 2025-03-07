@@ -1,18 +1,27 @@
-
-// .footer-links {
-//   display: flex;
-//   align-items: center;
+.footer{
+  background: rgba(0, 24, 90, 0.7);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: white;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: white;
+}
+// .marque{
+//   color: #ABB0AC;
 // }
-// .footer-links a {
-//   color: white;
-//   opacity: 0.15;
-//   text-decoration: none;
-//   font-size: 24px;
-//   padding: 0px 10px;
-// }
-// .footer-links a:hover {
-//   opacity: 1;
-// }
-// .footer .fa-heart {
-//   color: white;
-// }
+.footer-copyright{
+  color:#BCB3B4;
+  font-size: 12px;
+}
