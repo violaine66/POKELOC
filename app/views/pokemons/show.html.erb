@@ -1,5 +1,5 @@
 <div class="banner" ></div>
-<%# style="background-image: url('/images/constellations.jpg')" %>
+<%# <% style="background-image: url('/images/')" %>
 <div class="pokemon-show-bg">
 <div class="container">
   <div class="pokemon-container-show d-flex flex-column flex-lg-row justify-content-center">
@@ -83,7 +83,7 @@
   </div>
     <!-- Section de réservation (Booking) -->
   <div class="booking w-100 w-lg-25 mb-4 mb-lg-0" style="position: relative;">
-     <div class="new-booking sticky-top" style="top: 20px;">
+     <div class="new-booking" style="top: 20px;">
       <% if flash[:success] %>
         <div class="alert alert-success">
           <%= flash[:success] %>
