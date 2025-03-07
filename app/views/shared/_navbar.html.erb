@@ -5,9 +5,8 @@
       <img id="pokeball-accueil" src="/images/pokeball.png" alt="logo" class="navbar-brand rounded-circle" style="width: 50px; height: auto;"/>
     <% end %>
 
-    <div id="logo-pokeloc" class="navbar-brand ">
-        <img src="https://media.discordapp.net/attachments/829469989563269131/1344749503558975629/6af063a468db635ab1eb16dc393e49ff.png?ex=67c94b51&is=67c7f9d1&hm=777d74c8048c12569e4c0bd917db86991de39a3c456255d55dcc59b21c9b9de9&=&format=webp&quality=lossless"
-        alt="logo pokeloc'">
+    <div id="logo-pokeloc" class="navbar-brand">
+        <img src="/images/logo.png" alt="Logo Pokeloc">
     </div>
 
 
@@ -28,6 +27,8 @@
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "See Pokemons", pokemons_path, class: "dropdown-item"%>
+              <%= link_to "Add a Pokemon", new_pokemon_path, class: "dropdown-item"%>
             </div>
           </li>
 
