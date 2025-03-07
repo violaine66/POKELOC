@@ -32,14 +32,9 @@
   flex: 3;
   padding: 20px;
   border-radius: 5px;
+  background: linear-gradient(rgb(247, 241, 215),rgb(250, 231, 134));
 }
-// .map-container {
-//   filter: saturate(1.5);
-// }
-// #map {
-//   border-radius: 8px;
 
-// }
 .carousel-control-prev,
 .carousel-control-next {
   width: 10%; /* Réduit la largeur de la zone cliquable */
@@ -74,6 +69,7 @@
   // background-color:rgb(126, 185, 211);
   background-color: rgb(247, 241, 215);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position:sticky;
 }
 .booking .container {
   width: 100%;
