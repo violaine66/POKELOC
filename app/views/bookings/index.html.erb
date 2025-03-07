@@ -1,35 +1,35 @@
-<div class="container mt-3">
+<div class="bookings-container px-5 py-2">
   <h2>My current bookings</h2>
   <% @grouped_bookings.each do |month_year, bookings| %>
-    <h4><%= month_year %></h4>
-    <div class="row">
+    <h3><%= month_year %></h3>
+    <div class="row justify-content-center">
       <!-- Pour chaque réservation, afficher une carte qui occupe toute la ligne -->
       <% bookings.each do |booking| %>
-        <div class="col-6 mb-4"> <!-- Une carte par ligne (col-12) -->
-          <div class="card shadow-sm h-100 d-flex flex-row"> <!-- Ajout de flex-row pour aligner image et texte horizontalement -->
+        <div class="col-10 col-lg-5 col-sm-10 col-md-10 mb-4">
+          <div class="card custom-card h-100"> <!-- Ajout de flex-row pour aligner image et texte horizontalement -->
 
-            <!-- Vérification de l'existence d'une photo associée au Pokémon -->
-            <div class="col-3"> <!-- La colonne de l'image, ici on donne une largeur de 4/12 (33%) -->
+            <div class="d-flex flex-row"><!-- Vérification de l'existence d'une photo associée au Pokémon -->
+                <!--La colonne de l'image, ici on donne une largeur de 4/12 (33%) -->
               <% if booking.pokemon.photos.attached? %>
-                <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "card-img-left img-fluid" %> <!-- Utilisation de img-fluid pour l'image -->
+                <%= image_tag booking.pokemon.photos.first, alt: booking.pokemon.name, class: "card-img-left img-fluid", style: "height: 160px;" %> <!-- Utilisation de img-fluid pour l'image -->
               <% else %>
-                <div class="card-img-left d-flex justify-content-center align-items-center" style="height: 200px; background-color: #f8f9fa;">
+                <div class="card-img-left d-flex justify-content-center align-items-center" style="height: 150px; background-color: #f8f9fa;">
                   <p class="m-0">No image available</p>
                 </div>
               <% end %>
-            </div>
+              <!---->
 
-            <!-- Texte à droite -->
-            <div class="col-9"> <!-- La colonne du texte, ici on donne une largeur de 8/12 (66%) -->
+              <!-- Texte à droite -->
+                <!--La colonne du texte, ici on donne une largeur de 8/12 (66%) -->
               <div class="card-body">
-                <h4 class="card-title">
+                <h4 class="card-title name-element">
                   <%= booking.pokemon.name %> - <%= booking.pokemon.element_type %>
                 </h4>
 
                 <p>
-                  Booking starts from <%= booking.start_date.strftime("%B %d, %Y") %> to <%= booking.end_date.strftime("%B %d, %Y") %>.
+                  <i class="fa-solid fa-calendar-days"></i> <%= booking.start_date.strftime("%B %d, %Y") %> to <%= booking.end_date.strftime("%B %d, %Y") %>
                   <br>
-                  Total price: <%= booking.total_price %>€
+                  <i class="fa-solid fa-tags"></i> <%= booking.total_price %>€
                 </p>
 
                 <!-- Lien vers le détail du Pokémon -->
@@ -50,7 +50,7 @@
                   <i>Cancelled</i>
                 <% end %>
               </div>
-            </div>
+            </div><!---->
 
           </div>
         </div>
