@@ -39,10 +39,15 @@
       </div>
 
       <!-- Section Informations -->
-      <div class="pokemon-info" style="flex: 2; ms-2">
-        <p><strong>Description :</strong> <%= @pokemon.description %></p>
-        <p><strong>Address :</strong> <%= @pokemon.address %></p>
-        <p><strong>Price per day:</strong> <%= @pokemon.price_per_day %> €</p>
+
+      <div class="pokemon-info">
+        <div class="pokemon-info-card text-center ms-2">
+        <strong><p class="mt-4 mx-2"> <%= @pokemon.description %></p></strong>
+
+        <p><i class="fa-solid fa-location-dot pe-1"></i><%= @pokemon.address %></p>
+        <p><%= @pokemon.price_per_day %>€/day</p>
+
+        </div>
       </div>
     </div>
 
