@@ -1,16 +1,2 @@
 <div class="container">
-  <div class="text-center mt-4">
-
-    <% if user_signed_in?%>
-      <div class="">
-        <p> Hello <%= current_user.name %></p>
-        <%= link_to "See Pokemons", pokemons_path%>
-        <%= link_to "Add a Pokemon", new_pokemon_path %>
-      </div>
-
-    <% else %>
-      <p>"not connected"</p>
-    <% end %>
-
-  </div>
 </div>
