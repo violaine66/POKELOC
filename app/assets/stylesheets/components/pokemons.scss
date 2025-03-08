@@ -6,12 +6,13 @@
   color:bisque;
 }
 
-.search-container h2{
+.search-container a{
   font-family: "Jersey 20", sans-serif;
   font-weight: bolder;
   font-size: 40px;
   letter-spacing: 1px;
   color:bisque;
+  cursor: pointer;
 }
 .index-contain {
   background: linear-gradient(to top right, rgb(255, 255, 200),  rgb(200, 220, 255),rgb(70, 90, 128));
