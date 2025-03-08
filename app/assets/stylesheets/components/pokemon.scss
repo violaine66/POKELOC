@@ -1,4 +1,4 @@
-.banner{
+.banner {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,8 +12,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
 }
-.pokemon-show-bg{
-  // background-color:rgb(73, 90, 114);
+.pokemon-show-bg {
   background:linear-gradient( rgb(210, 224, 251), rgb(126, 185, 211), rgb(63, 94, 141));
 }
 .pokemon-container-show {
@@ -27,7 +26,7 @@
 }
 .pokemon-card {
   display: flex;
-  background-color:rgb(247, 241, 215);
+  // background-color:rgb(247, 241, 215);
   gap: 20px;
   flex: 3;
   padding: 20px;
@@ -66,7 +65,6 @@
 .new-booking {
   padding: 20px;
   border-radius: 5px;
-  // background-color:rgb(126, 185, 211);
   background-color: rgb(247, 241, 215);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position:sticky;
@@ -78,11 +76,16 @@
   font-size: 1.5rem;
   margin-bottom: 15px;
 }
-.bg-white{
-  background-color: bisque;
-  border : 2px solid rgb(160, 192, 252)
+.form-new {
+  background-color: rgb(247, 241, 215);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
-.pokemon-info-card{
+.form .input{
+  background-color: bisque;
+}
+.pokemon-info-card {
   border: 1px solid bisque;
   border-radius: 48px 0;
   background-color: bisque;
@@ -90,9 +93,19 @@
   color: rgb(203, 118, 63);
   min-height: 200px;
 }
-.bookings-container{
+.bookings-container {
   background: linear-gradient(  rgb(63, 94, 141), rgb(126, 185, 211), rgb(210, 224, 251));
 }
-.new{
+.new {
   background: linear-gradient(rgb(210, 224, 251), rgb(126, 185, 211), rgb(63, 94, 141));
+  // background-image: url('/images/new-pokemon.jpg');
+  // background-image: url('/images/image_navbar.png');
+  // background-image: url("images/constellations.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.new-title {
+font-family: "Jersey 20", sans-serif;
+color: rgb(203, 118, 63);
 }
