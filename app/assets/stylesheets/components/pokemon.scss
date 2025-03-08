@@ -82,18 +82,6 @@
   background-color: bisque;
   border : 2px solid rgb(160, 192, 252)
 }
-@media (max-width: 767px) {
-  .pokemon-card {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .pokemon-image-container,
-  .pokemon-info {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
 .pokemon-info-card{
   border: 1px solid bisque;
   border-radius: 48px 0;
