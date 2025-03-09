@@ -1,5 +1,5 @@
 <div class="banner" ></div>
-<%# style="background-image: url('/images/constellations.jpg')" %>
+<img src="/images/showPokemon.jpg" alt="constellations" class="banner object-fit-cover" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -1;">
 <div class="pokemon-show-bg">
 <div class="container">
   <div class="pokemon-container-show d-flex flex-column flex-lg-row justify-content-center">
@@ -46,7 +46,7 @@
         <strong><p class="mt-4 mx-2"> <%= @pokemon.description %></p></strong>
 
         <p><i class="fa-solid fa-location-dot pe-1"></i><%= @pokemon.address %></p>
-        <p><%= @pokemon.price_per_day %>€/day</p>
+        <strong><p><%= @pokemon.price_per_day %>€/day</p></strong>
 
         </div>
       </div>
@@ -72,18 +72,16 @@
             </div>
           <% end %>
         <% else %>
-          <p>No reviews yet</p>
+          <em><p>No reviews yet</p></em>
         <% end %>
       </div>
 
     </div>
     <!-- Carte Map sous les informations, prenant toute la largeur -->
-
-
   </div>
     <!-- Section de réservation (Booking) -->
   <div class="booking w-100 w-lg-25 mb-4 mb-lg-0" style="position: relative;">
-     <div class="new-booking sticky-top" style="top: 20px;">
+     <div class="new-booking" style="top: 20px;">
       <% if flash[:success] %>
         <div class="alert alert-success">
           <%= flash[:success] %>
@@ -94,20 +92,25 @@
         </div>
       <% end %>
 
-      <h2>Book This Pokemon?</h2>
-      <p><%= @pokemon.name  %></p>
+      <h2 class = "askBooking" >Book This Pokemon?</h2>
+      <p class= "book-name"><%= @pokemon.name  %></p>
+      <div data-controller="calculate-total-price" class="form">
       <%= simple_form_for [@pokemon, @booking] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { data:{ controller: 'datepicker' } } %>
-        <%= f.input :end_date, as: :string, input_html: { data:{ controller: 'datepicker' } } %>
-        <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
+        <%= f.input :start_date, as: :string, input_html: { data:{ controller: 'datepicker' ,  calculate_total_price_target: "startdate", action:"change->calculate-total-price#calculatePrice"}  } %>
+        <%= f.input :end_date, as: :string, input_html: { data:{ controller: 'datepicker', calculate_total_price_target: "enddate", action:"change->calculate-total-price#calculatePrice"}}  %>
+        <%= hidden_field_tag :price_per_day, @pokemon.price_per_day, data: { calculate_total_price_target: "pricePerDay" } %>
+          <p><%= @pokemon.price_per_day %> €/day</p>
+          <p><strong>Total Price: <span data-calculate-total-price-target="totalprice" style="display: none;">0 €</span></strong></p>
+        <%= f.submit "Confirm Booking", class: "btn btn-outline-warning" %>
       <% end %>
+      </div>
     </div>
 
   </div>
 
 </div>
-<div class="pb-5">
-<%= link_to "Back to the list", pokemons_path, class:"text-decoration-none text-dark" %>
+<div class="pb-3">
+<%= link_to "Back to the list", pokemons_path, class:"text-decoration-none text-white" %>
 </div>
 
 </div>

@@ -1,19 +1,27 @@
-<div class="container m-3 ">
-  <div class="row d-flex justify-content-center ">
-    <div class="col-12 col-sm-8 col-md-6">
-      <div class="bg-white rounded p-3 shadow-sm">
-        <div class="new-pokemon ">
-          <h2 class = "my-3" >Add a new Pokemon</h2>
+<div class="new">
+  <div class="container p-3">
+    <div class="row d-flex justify-content-around align-items-center">
+      <!-- Colonne pour l'image -->
+      <div class="col-12 col-sm-4">
+        <%= image_tag "image_navbar.png", alt: "pokemon", class: "img-fluid rounded shadow-sm" %>
+      </div>
+
+      <!-- Colonne pour le formulaire -->
+      <div class="col-12 col-sm-8 col-md-6">
+        <div class="form-new rounded p-3 shadow-sm">
+          <div class="new-pokemon">
+            <h2 class="new-title my-3">Add a new Pokemon</h2>
             <%= simple_form_for @pokemon do |f| %>
-            <%= f.input :name %>
-            <%= f.input :element_type %>
-            <%= f.input :address%>
-            <%= f.input :price_per_day %>
-            <%= f.input :description %>
-            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Choose Photos" %>
-            <%= f.button :submit, class:"btn btn-primary mb-3" %>
+              <%= f.input :name %>
+              <%= f.input :element_type %>
+              <%= f.input :address %>
+              <%= f.input :price_per_day %>
+              <%= f.input :description %>
+              <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Choose Photos" %>
+              <%= f.button :submit, class:"btn btn-outline-warning mb-3" %>
             <% end %>
-            <%= link_to "back", pokemons_path, class:"text-decoration-none" %>
+            <%= link_to "back", pokemons_path, class:"text-decoration-none text-dark" %>
+          </div>
         </div>
       </div>
     </div>

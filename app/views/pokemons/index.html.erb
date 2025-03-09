@@ -1,12 +1,9 @@
 <!-- Conteneur de recherche avec le même background -->
-<div class="search-container p-3">
-
-    <h2>Search Pokemon</h2>
-
-  <%= form_with url: search_pokemons_path, method: :get, local: true, class: "d-flex" do %>
-    <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Name, element or address..." %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+<div data-controller="toggle" class="search-container p-2 d-flex justift-content-between align-items-center">
+     <a data-action="click->toggle#fire" class="btn-outline-primary me-2 text-decoration-none"> <i class="fas fa-search ms-3 me-1 fs-2"></i> Search Pokemon ?</a>
+  <div  data-toggle-target="toggableElement" class=" d-none w-50">
+    <%= render "form_search" %>
+  </div>
 </div>
 
 <!-- Conteneur principal -->
@@ -36,7 +33,7 @@
                 <h3 class="name-element mb-3"><%= pokemon.name %> - <%= pokemon.element_type %></h3>
                   <div class="pokemon-index-image my-2 bg-light">
                     <% if pokemon.photos.attached? %>
-                      <%= image_tag pokemon.photos.first, alt: pokemon.name, class: "pokemon-image img-fluid", width: 135, height: 135 %>
+                      <%= image_tag pokemon.photos.first, alt: pokemon.name, class: "pokemon-image object-fit-contain", width: 135, height: 135 %>
                     <% else %>
                       <p>No image available</p>
                     <% end %>

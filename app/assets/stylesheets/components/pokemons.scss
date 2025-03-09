@@ -1,78 +1,76 @@
 
 .search-container {
-  // background-color: rgb(70, 90, 128);
-  background: linear-gradient(to right, rgb(70, 90, 128), rgb(200, 220, 255));
+  background: linear-gradient( to top right, rgb(200, 220, 255), rgb(72, 92, 130));
 }
-.search-container h2{
+.form-control {
+  background-color:bisque;
+  opacity: 0.5;
+  border-radius: 5px;
+}
+.search-container a {
   font-family: "Jersey 20", sans-serif;
   font-weight: bolder;
   font-size: 40px;
   letter-spacing: 1px;
   color:bisque;
+  cursor: pointer;
 }
+.search-container a:hover {
+  transform: scale(1.05);
+}
+
 .index-contain {
-  // background-color: rgb(70, 90, 128);
   background: linear-gradient(to top right, rgb(255, 255, 200),  rgb(200, 220, 255),rgb(70, 90, 128));
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
 }
-.pokemons{
+.pokemons {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
 }
-.pokemons-grid-index{
+.pokemons-grid-index {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
   justify-content: center;
   width: 100%;
 }
-
-.mb-4.search-bar {
-  background-color: rgb(70, 90, 128);
-}
-.pokemon-index-card{
+.pokemon-index-card {
   display: block;
   align-items: center;
   justify-content: center;
   text-align: center;
-  max-height: 400px;
-  // background-color: rgb(137, 34, 45);
-  background-color: rgb(134, 185, 201);
+  max-height: 460px;
+  // background-color: rgb(134, 185, 201);
+  background: linear-gradient(135deg, rgb(134, 185, 201) 60%, rgb(245, 225, 160) 100%);
   border-radius: 15px;
   font-weight: bold;
   transition: transform 0.3s ease-in-out;
-  // border: 4px solid rgb(126, 185, 211);
-  // border: 4px solid rgb(42, 181, 187);
   border: 4px solid rgb(72, 124, 202);
   min-height: 400px;
 }
 .pokemon-index-card:hover {
   transform: rotateY(30deg);
 }
-.pokemon-index-image{
-  // border: 8px solid #D8C4B6;
+.pokemon-index-image {
   border: 8px solid rgb(252, 239, 171);
   border-radius: 3px;
   object-fit: cover;
 }
-.name-element{
+.name-element {
   font-family: "Jersey 20", sans-serif;
   font-weight: bolder;
   font-size: 40px;
-  // color: rgb(222, 185, 102);
   color: rgb(203, 118, 63);
 }
-.adress-price{
-  // color:rgb(222, 185, 102);
+.adress-price {
   color: rgb(203, 118, 63);
   min-height: 60px;
 }
-
 .map {
   width: 32%;
   min-height: 400px;
@@ -89,90 +87,7 @@
   height: 400px;
   background: #ddd;
 }
-#on{
+#on {
   color:rgb(42, 181, 187);
   font-size: 28px;
-}
-// reponsive
-@media (max-width: 576px) {
-  .cercles {
-    justify-content: center; /* Centre les cercles sur mobile */
-  }
-
-  .cercle {
-    gap: 3px; /* Réduit l'espacement */
-  }
-
-  .cercles i {
-    font-size: 10px; /* Réduit la taille des points si nécessaire */
-  }
-  .search-container .d-flex {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .search-container input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .search-container .btn {
-    width: 100%;
-  }
-  .map-container {
-    height: 250px; /* Réduit la hauteur sur petits écrans */
-  }
-  .pokemon-index-card {
-    min-width: 90%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-}
-
-@media (max-width: 768px) {
-  .details {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .pokemons-grid-index {
-    grid-template-columns: repeat(1, 1fr); // 1 carte par ligne sur mobile
-    grid-template-rows: auto; // S'adapte au contenu
-  }
-  .pokemon-index-card {
-    width: 100%;
-  }
-
-  .adress-price {
-    text-align: center;
-  }
-
-  .details .d-flex {
-    justify-content: center;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 992px) {
-  .index-contain {
-    flex-direction: column;
-    align-items: center;
-  }
-  .pokemons {
-    width: 100%;
-  }
-
-  .map {
-    width: 100%;
-   margin: 20px 0 0 0; /* Supprime la marge de gauche et ajoute de l'espace au-dessus */
-    order: 2; /* Place la carte après la liste des Pokémons */
-  }
-
-  .pokemons-grid-index {
-    grid-template-columns: repeat(2, 1fr); // 2 cartes par ligne sur tablette
-    grid-template-rows: repeat(3, auto); // 3 lignes max
-  }
-  .pokemons {
-    order: 1; /* Assure que la liste des Pokémons est en haut */
-  }
 }

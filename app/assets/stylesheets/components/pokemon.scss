@@ -1,4 +1,4 @@
-.banner{
+.banner {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,14 +12,12 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
 }
-.pokemon-show-bg{
-  // background-color:rgb(73, 90, 114);
+.pokemon-show-bg {
   background:linear-gradient( rgb(210, 224, 251), rgb(126, 185, 211), rgb(63, 94, 141));
 }
 .pokemon-container-show {
   display: flex;
   flex-wrap: wrap;
-  // background-color: rgb(73, 90, 114)   ;
   position: relative;
   top: -50px;
   gap: 20px;
@@ -27,35 +25,34 @@
 }
 .pokemon-card {
   display: flex;
-  background-color:rgb(247, 241, 215);
   gap: 20px;
   flex: 3;
   padding: 20px;
   border-radius: 5px;
+  background: linear-gradient(rgb(247, 241, 215),rgb(250, 231, 134));
 }
-// .map-container {
-//   filter: saturate(1.5);
-// }
-// #map {
-//   border-radius: 8px;
+.pokemon-card > h2 {
+  color : rgb(203, 118, 63);
+  font-family: "Jersey 20", sans-serif;
+  font-size: 45px;
+}
 
-// }
 .carousel-control-prev,
 .carousel-control-next {
-  width: 10%; /* Réduit la largeur de la zone cliquable */
+  width: 10%;
 }
 
 .carousel-control-prev {
-  left: -10px; /* Rapproche la flèche gauche */
+  left: -10px;
 }
 
 .carousel-control-next {
-  right: -10px; /* Rapproche la flèche droite */
+  right: -10px;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  width: 30px; /* Taille des icônes */
+  width: 30px;
   height: 30px;
 }
 .pokemon-image-container {
@@ -64,16 +61,51 @@
 .pokemon-info {
   flex: 1;
 }
-
+.form-new {
+  background-color: rgb(247, 241, 215);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.form .input {
+  background-color: bisque;
+}
+.pokemon-info-card {
+  border: 1px solid bisque;
+  border-radius: 48px 0;
+  background-color: bisque;
+  font-size: 16px;
+  color: rgb(203, 118, 63);
+  min-height: 200px;
+}
+h4, h5 {
+  font-family: "Jersey 20", sans-serif;
+  color: rgb(203, 118, 63);
+  font-size: 30px;
+}
+.askBooking {
+  color: rgb(203, 118, 63);
+  font-size: 30px;
+  font-weight: bolder;
+}
+.bookings-container {
+  background: linear-gradient(  rgb(63, 94, 141), rgb(126, 185, 211), rgb(210, 224, 251));
+}
 .booking {
   flex: 1;
+}
+.book-name {
+  font-family: "Jersey 20", sans-serif;
+  color: rgb(203, 118, 63);
+  font-size: 28px;
+  opacity: 1;
 }
 .new-booking {
   padding: 20px;
   border-radius: 5px;
-  // background-color:rgb(126, 185, 211);
   background-color: rgb(247, 241, 215);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position:sticky;
 }
 .booking .container {
   width: 100%;
@@ -82,23 +114,20 @@
   font-size: 1.5rem;
   margin-bottom: 15px;
 }
-@media (max-width: 767px) {
-  .pokemon-card {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .pokemon-image-container,
-  .pokemon-info {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+.new {
+  background: linear-gradient(rgb(210, 224, 251), rgb(126, 185, 211), rgb(63, 94, 141));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.pokemon-info-card{
-  border: 1px solid bisque;
-  border-radius: 48px 0;
-  background-color: bisque;
-  font-size: 16px;
-  color: rgb(203, 118, 63);
-  min-height: 200px;
+.new-title {
+font-family: "Jersey 20", sans-serif;
+color: rgb(203, 118, 63);
+font-size: 45px;
+}
+.new-review {
+  background-color: rgb(247, 241, 215);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }

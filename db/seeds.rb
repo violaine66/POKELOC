@@ -67,6 +67,8 @@ pokemon_list["results"].each do |pokemon|
     "Zzyzx Road, Californie, États-Unis"
   ]
 
+
+
 # Récupérer directement la description sans vérifier la langue
 description = species_data["flavor_text_entries"].first["flavor_text"].gsub("\n", " ")
 
@@ -79,7 +81,6 @@ price_per_day = rand(50..100)
     price_per_day: price_per_day,
     user: [user1, user2].sample,
     description: description
-    # reviews: [Review.new(rating: rand(1..5), comment: "Super Pokémon !"), Review.new(rating: rand(1..5), comment: "Je recommande !")].sample(rand(0..2))
   )
 
   image_urls = [
