@@ -1,1 +1,50 @@
-// Specific CSS for your home-page
+.home-button{
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px #0D1B40;
+  padding: 8px 12px;
+  background-color: #51F2F4;
+  opacity: 70%;
+  border: 1px solid #0D1B40;
+  a{
+    text-decoration: none;
+    color: #0D1B40;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  a:hover{
+
+  }
+}
+
+#background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding-left: 50px;
+}
+
+.description {
+  padding-left: 50px;
+  margin-bottom: 20px;
+  max-width: 50%;
+  text-align: center;
+  -webkit-text-stroke: 2px #0D1B40;
+  h1{
+    color: white;
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 50px;
+    font-weight: 800;
+  }
+}
+
+#buttons-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 50%;
+  padding-left: 50px;
+}
