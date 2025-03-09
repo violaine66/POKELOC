@@ -1,2 +1,26 @@
-<div class="container">
+<div id="background">
+  <style>
+    body {
+      background-image: url('/images/pokehome2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
+
+  <div class="description">
+    <h1>Enter the world of Pokemon and become League Champion!</h1>
+  </div>
+
+  <div class="d-flex" id="buttons-container">
+    <div class="home-button">
+      <%= link_to "See Pokemons", pokemons_path%>
+    </div>
+
+    <div class="home-button">
+      <%= link_to "Add a Pokemon", new_pokemon_path%>
+    </div>
+  </div>
+
+
 </div>
