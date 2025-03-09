@@ -1,29 +1,39 @@
 .footer{
   background: rgba(0, 24, 90, 0.7);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.marque{
+  opacity: 0.8;
 }
 .footer-links {
   display: flex;
   align-items: center;
+  gap:10px;
 }
+
 .footer-links a {
   color: white;
-  opacity: 0.15;
+  opacity: 0.5;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 21px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
   opacity: 1;
 }
-.footer .fa-heart {
+.footer-links p {
   color: white;
 }
-// .marque{
-//   color: #ABB0AC;
-// }
-.footer-copyright{
-  color:#BCB3B4;
-  font-size: 12px;
+#FAQ {
+  font-size: 16px;
+  opacity: 0.5;
+}
+#FAQ:hover {
+  opacity: 1;
 }
 #pikachu{
   width:30px;
