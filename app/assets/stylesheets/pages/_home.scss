@@ -1,18 +1,23 @@
 .home-button{
   border-radius: 10px;
-  box-shadow: 4px 4px 6px #0D1B40;
+  box-shadow: 4px 4px 6px rgba(0, 24, 90, 0.7);
   padding: 8px 12px;
   background-color: #51F2F4;
   opacity: 70%;
-  border: 1px solid #0D1B40;
+  border: 1px solid rgba(0, 24, 90, 0.7);
   a{
     text-decoration: none;
     color: #0D1B40;
     font-size: 24px;
     font-weight: bold;
   }
-  a:hover{
+}
 
+.home-button:hover{
+  background-color: rgba(0, 24, 90, 0.7);
+  border: 1px solid #51F2F4;
+  a{
+    color: #51F2F4;
   }
 }
 
@@ -27,17 +32,16 @@
 
 .description {
   padding-left: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   max-width: 50%;
   text-align: center;
-  -webkit-text-stroke: 2px #0D1B40;
+  -webkit-text-stroke: 2px rgba(0, 24, 90, 0.7);
   h1{
     color: white;
-    font-family: "Kanit", sans-serif;
-    font-weight: 300;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 700;
     font-style: normal;
     font-size: 50px;
-    font-weight: 800;
   }
 }
 
