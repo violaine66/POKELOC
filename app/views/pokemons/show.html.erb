@@ -46,7 +46,7 @@
         <strong><p class="mt-4 mx-2"> <%= @pokemon.description %></p></strong>
 
         <p><i class="fa-solid fa-location-dot pe-1"></i><%= @pokemon.address %></p>
-        <p><%= @pokemon.price_per_day %>€/day</p>
+        <strong><p><%= @pokemon.price_per_day %>€/day</p></strong>
 
         </div>
       </div>
@@ -72,7 +72,7 @@
             </div>
           <% end %>
         <% else %>
-          <p>No reviews yet</p>
+          <em><p>No reviews yet</p></em>
         <% end %>
       </div>
 
@@ -92,7 +92,7 @@
         </div>
       <% end %>
 
-      <h2>Book This Pokemon?</h2>
+      <h2 class = "askBooking" >Book This Pokemon?</h2>
       <p class= "book-name"><%= @pokemon.name  %></p>
       <div data-controller="calculate-total-price" class="form">
       <%= simple_form_for [@pokemon, @booking] do |f| %>

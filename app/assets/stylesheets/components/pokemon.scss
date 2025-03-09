@@ -78,6 +78,16 @@
   color: rgb(203, 118, 63);
   min-height: 200px;
 }
+h4, h5 {
+  font-family: "Jersey 20", sans-serif;
+  color: rgb(203, 118, 63);
+  font-size: 30px;
+}
+.askBooking {
+  color: rgb(203, 118, 63);
+  font-size: 30px;
+  font-weight: bolder;
+}
 .bookings-container {
   background: linear-gradient(  rgb(63, 94, 141), rgb(126, 185, 211), rgb(210, 224, 251));
 }
@@ -114,4 +124,10 @@
 font-family: "Jersey 20", sans-serif;
 color: rgb(203, 118, 63);
 font-size: 45px;
+}
+.new-review {
+  background-color: rgb(247, 241, 215);
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
