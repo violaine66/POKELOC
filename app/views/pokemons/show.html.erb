@@ -93,7 +93,7 @@
       <% end %>
 
       <h2>Book This Pokemon?</h2>
-      <p><%= @pokemon.name  %></p>
+      <p class= "book-name"><%= @pokemon.name  %></p>
       <div data-controller="calculate-total-price" class="form">
       <%= simple_form_for [@pokemon, @booking] do |f| %>
         <%= f.input :start_date, as: :string, input_html: { data:{ controller: 'datepicker' ,  calculate_total_price_target: "startdate", action:"change->calculate-total-price#calculatePrice"}  } %>

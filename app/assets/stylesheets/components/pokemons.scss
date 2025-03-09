@@ -1,12 +1,13 @@
 
 .search-container {
-  background: linear-gradient(  rgb(63, 94, 141), rgb(126, 185, 211), rgb(210, 224, 251));
+  background: linear-gradient( to top right, rgb(200, 220, 255), rgb(72, 92, 130));
 }
-.form-control{
-  color:bisque;
+.form-control {
+  background-color:bisque;
+  opacity: 0.5;
+  border-radius: 5px;
 }
-
-.search-container a{
+.search-container a {
   font-family: "Jersey 20", sans-serif;
   font-weight: bolder;
   font-size: 40px;
@@ -14,6 +15,10 @@
   color:bisque;
   cursor: pointer;
 }
+.search-container a:hover {
+  transform: scale(1.05);
+}
+
 .index-contain {
   background: linear-gradient(to top right, rgb(255, 255, 200),  rgb(200, 220, 255),rgb(70, 90, 128));
   display: flex;
@@ -21,61 +26,51 @@
   align-items: flex-start;
   gap: 10px;
 }
-.pokemons{
+.pokemons {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
 }
-.pokemons-grid-index{
+.pokemons-grid-index {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
   justify-content: center;
   width: 100%;
 }
-
-.mb-4.search-bar {
-  background-color: rgb(70, 90, 128);
-}
-.pokemon-index-card{
+.pokemon-index-card {
   display: block;
   align-items: center;
   justify-content: center;
   text-align: center;
   max-height: 460px;
-  // background-color: rgb(137, 34, 45);
-  background-color: rgb(134, 185, 201);
+  // background-color: rgb(134, 185, 201);
+  background: linear-gradient(135deg, rgb(134, 185, 201) 60%, rgb(245, 225, 160) 100%);
   border-radius: 15px;
   font-weight: bold;
   transition: transform 0.3s ease-in-out;
-  // border: 4px solid rgb(126, 185, 211);
-  // border: 4px solid rgb(42, 181, 187);
   border: 4px solid rgb(72, 124, 202);
   min-height: 400px;
 }
 .pokemon-index-card:hover {
   transform: rotateY(30deg);
 }
-.pokemon-index-image{
-  // border: 8px solid #D8C4B6;
+.pokemon-index-image {
   border: 8px solid rgb(252, 239, 171);
   border-radius: 3px;
   object-fit: cover;
 }
-.name-element{
+.name-element {
   font-family: "Jersey 20", sans-serif;
   font-weight: bolder;
   font-size: 40px;
-  // color: rgb(222, 185, 102);
   color: rgb(203, 118, 63);
 }
-.adress-price{
-  // color:rgb(222, 185, 102);
+.adress-price {
   color: rgb(203, 118, 63);
   min-height: 60px;
 }
-
 .map {
   width: 32%;
   min-height: 400px;
@@ -92,7 +87,7 @@
   height: 400px;
   background: #ddd;
 }
-#on{
+#on {
   color:rgb(42, 181, 187);
   font-size: 28px;
 }
