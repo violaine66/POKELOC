@@ -101,7 +101,7 @@
         <%= hidden_field_tag :price_per_day, @pokemon.price_per_day, data: { calculate_total_price_target: "pricePerDay" } %>
           <p><%= @pokemon.price_per_day %> €/day</p>
           <p><strong>Total Price: <span data-calculate-total-price-target="totalprice" style="display: none;">0 €</span></strong></p>
-        <%= f.submit "Confirm Booking", class: "btn btn-outline-primary" %>
+        <%= f.submit "Confirm Booking", class: "btn btn-outline-warning" %>
       <% end %>
       </div>
     </div>
