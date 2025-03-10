@@ -12,10 +12,13 @@
     <h1>Enter the world of Pokemon and become League Champion!</h1>
   </div>
 
-  <div  data-controller = "audio" id="buttons-container">
-
+  <div  data-controller = "btnaudio" id="buttons-container">
+    <audio data-btnaudio-target="audio">
+      <source src="/audio/pokemon-sound.mp3" type="audio/mpeg">
+    </audio>
     <div  class="home-button">
-        <%= link_to " See pokemons", pokemons_path %>
-      </div>
+      <%= link_to "Come in, catch and train!", pokemons_path, data: { action: "click->btnaudio#playMusic" } %>
     </div>
+
+  </div>
 </div>
