@@ -13,11 +13,9 @@
   </div>
 
   <div  data-controller = "audio" id="buttons-container">
-    <audio data-audio-target="btnAudio">
-      <source src="/audio/pokemon-cry.wav" type="audio/wav">
-    </audio>
+
     <div  class="home-button">
-        <%= link_to "Come in, catch and train!", pokemons_path, data: { action: "click->audio#playMusic" } %>
+        <%= link_to " See pokemons", pokemons_path %>
       </div>
     </div>
 </div>
